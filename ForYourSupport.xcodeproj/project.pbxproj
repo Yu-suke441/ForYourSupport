@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBA0E58D259DD9E800760F40 /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E58C259DD9E800760F40 /* ItemRowView.swift */; };
+		CBA0E596259DDA9200760F40 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E595259DDA9200760F40 /* CategoryView.swift */; };
+		CBA0E599259DDAA900760F40 /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E598259DDAA900760F40 /* NumberView.swift */; };
+		CBA0E59C259DDAB300760F40 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E59B259DDAB300760F40 /* MemoView.swift */; };
+		CBA0E59F259DDABF00760F40 /* ShoppingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E59E259DDABF00760F40 /* ShoppingView.swift */; };
+		CBA0E5A2259DDACF00760F40 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5A1259DDACF00760F40 /* GraphView.swift */; };
+		CBA0E5A5259DDAE100760F40 /* NumberInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5A4259DDAE100760F40 /* NumberInput.swift */; };
+		CBA0E5A8259DDAF400760F40 /* CharacterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5A7259DDAF400760F40 /* CharacterInputView.swift */; };
+		CBA0E5AC259DDB1200760F40 /* ShoppingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */; };
+		CBA0E5AF259DDC3800760F40 /* NumberTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5AE259DDC3800760F40 /* NumberTypeListView.swift */; };
+		CBA0E5B2259DDC9500760F40 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5B1259DDC9500760F40 /* NavigationBarView.swift */; };
+		CBA0E5B5259DDCF700760F40 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5B4259DDCF700760F40 /* ItemListView.swift */; };
+		CBA0E5BC259DE15100760F40 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5BB259DE15100760F40 /* ItemStore.swift */; };
 		CBCA5301259DC41700B2E008 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA5300259DC41700B2E008 /* AppDelegate.swift */; };
 		CBCA5303259DC41700B2E008 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA5302259DC41700B2E008 /* SceneDelegate.swift */; };
 		CBCA5305259DC41700B2E008 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA5304259DC41700B2E008 /* ContentView.swift */; };
@@ -20,12 +33,24 @@
 		CBD60D0E259DC94C008BB5A9 /* ItemDBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D0D259DC94C008BB5A9 /* ItemDBKeys.swift */; };
 		CBD60D12259DC995008BB5A9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D11259DC995008BB5A9 /* Item.swift */; };
 		CBD60D17259DCA07008BB5A9 /* RealmPersistentInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */; };
-		CBD60D1B259DCA9F008BB5A9 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D1A259DCA9F008BB5A9 /* ItemStore.swift */; };
 		D565336E6F7E866FAC844F41 /* Pods_ForYourSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C92C77B8FD3D2232A8EA509D /* Pods-ForYourSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.release.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.release.xcconfig"; sourceTree = "<group>"; };
+		CBA0E58C259DD9E800760F40 /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
+		CBA0E595259DDA9200760F40 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		CBA0E598259DDAA900760F40 /* NumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
+		CBA0E59B259DDAB300760F40 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
+		CBA0E59E259DDABF00760F40 /* ShoppingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingView.swift; sourceTree = "<group>"; };
+		CBA0E5A1259DDACF00760F40 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		CBA0E5A4259DDAE100760F40 /* NumberInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInput.swift; sourceTree = "<group>"; };
+		CBA0E5A7259DDAF400760F40 /* CharacterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInputView.swift; sourceTree = "<group>"; };
+		CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingInputView.swift; sourceTree = "<group>"; };
+		CBA0E5AE259DDC3800760F40 /* NumberTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTypeListView.swift; sourceTree = "<group>"; };
+		CBA0E5B1259DDC9500760F40 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		CBA0E5B4259DDCF700760F40 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
+		CBA0E5BB259DE15100760F40 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		CBCA52FD259DC41700B2E008 /* ForYourSupport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForYourSupport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCA5300259DC41700B2E008 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBCA5302259DC41700B2E008 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,7 +63,6 @@
 		CBD60D0D259DC94C008BB5A9 /* ItemDBKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDBKeys.swift; sourceTree = "<group>"; };
 		CBD60D11259DC995008BB5A9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistentInitializer.swift; sourceTree = "<group>"; };
-		CBD60D1A259DCA9F008BB5A9 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForYourSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB50873D281E6E085EF2DDA3 /* Pods-ForYourSupport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.debug.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +123,18 @@
 				CBCA5300259DC41700B2E008 /* AppDelegate.swift */,
 				CBCA5302259DC41700B2E008 /* SceneDelegate.swift */,
 				CBCA5304259DC41700B2E008 /* ContentView.swift */,
+				CBA0E5B1259DDC9500760F40 /* NavigationBarView.swift */,
+				CBA0E58C259DD9E800760F40 /* ItemRowView.swift */,
+				CBA0E5B4259DDCF700760F40 /* ItemListView.swift */,
+				CBA0E595259DDA9200760F40 /* CategoryView.swift */,
+				CBA0E598259DDAA900760F40 /* NumberView.swift */,
+				CBA0E59B259DDAB300760F40 /* MemoView.swift */,
+				CBA0E59E259DDABF00760F40 /* ShoppingView.swift */,
+				CBA0E5A1259DDACF00760F40 /* GraphView.swift */,
+				CBA0E5A4259DDAE100760F40 /* NumberInput.swift */,
+				CBA0E5A7259DDAF400760F40 /* CharacterInputView.swift */,
+				CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */,
+				CBA0E5AE259DDC3800760F40 /* NumberTypeListView.swift */,
 				CBD60D15259DC9D3008BB5A9 /* RealmDB */,
 				CBD60CFC259DC7D2008BB5A9 /* Models */,
 				CBCA5306259DC41800B2E008 /* Assets.xcassets */,
@@ -130,8 +166,8 @@
 		CBD60D15259DC9D3008BB5A9 /* RealmDB */ = {
 			isa = PBXGroup;
 			children = (
+				CBA0E5BB259DE15100760F40 /* ItemStore.swift */,
 				CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */,
-				CBD60D1A259DCA9F008BB5A9 /* ItemStore.swift */,
 			);
 			path = RealmDB;
 			sourceTree = "<group>";
@@ -262,12 +298,24 @@
 			files = (
 				CBD60CFE259DC7E9008BB5A9 /* ItemDB.swift in Sources */,
 				CBCA5301259DC41700B2E008 /* AppDelegate.swift in Sources */,
+				CBA0E59F259DDABF00760F40 /* ShoppingView.swift in Sources */,
+				CBA0E5AF259DDC3800760F40 /* NumberTypeListView.swift in Sources */,
+				CBA0E58D259DD9E800760F40 /* ItemRowView.swift in Sources */,
+				CBA0E5A5259DDAE100760F40 /* NumberInput.swift in Sources */,
 				CBD60D17259DCA07008BB5A9 /* RealmPersistentInitializer.swift in Sources */,
+				CBA0E596259DDA9200760F40 /* CategoryView.swift in Sources */,
 				CBCA5303259DC41700B2E008 /* SceneDelegate.swift in Sources */,
 				CBD60D0E259DC94C008BB5A9 /* ItemDBKeys.swift in Sources */,
 				CBD60D12259DC995008BB5A9 /* Item.swift in Sources */,
-				CBD60D1B259DCA9F008BB5A9 /* ItemStore.swift in Sources */,
+				CBA0E5A2259DDACF00760F40 /* GraphView.swift in Sources */,
+				CBA0E5AC259DDB1200760F40 /* ShoppingInputView.swift in Sources */,
+				CBA0E5B2259DDC9500760F40 /* NavigationBarView.swift in Sources */,
+				CBA0E5A8259DDAF400760F40 /* CharacterInputView.swift in Sources */,
+				CBA0E599259DDAA900760F40 /* NumberView.swift in Sources */,
+				CBA0E59C259DDAB300760F40 /* MemoView.swift in Sources */,
 				CBCA5305259DC41700B2E008 /* ContentView.swift in Sources */,
+				CBA0E5BC259DE15100760F40 /* ItemStore.swift in Sources */,
+				CBA0E5B5259DDCF700760F40 /* ItemListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

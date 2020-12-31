@@ -5,19 +5,23 @@
 //  Created by Yusuke Murayama on 2020/12/31.
 //
 
-import Foundation
+import SwiftUI
 import RealmSwift
 
 final class ItemStore: ObservableObject {
-    private var itemResults: Results<ItemDB>
+    
+    private var itemResults: Results<ItemDB>!
     
     init(realm: Realm) {
         itemResults = realm.objects(ItemDB.self)
     }
     
+    
+    
     var items: [Item] {
-        itemResults.map(Item.init)
+         itemResults.map(Item.init)
     }
+    
 }
 
 extension ItemStore {
@@ -97,6 +101,7 @@ extension ItemStore {
     }
     
 }
+
 
 
 
