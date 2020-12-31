@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,14 @@
 		CBCA5307259DC41800B2E008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBCA5306259DC41800B2E008 /* Assets.xcassets */; };
 		CBCA530A259DC41800B2E008 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBCA5309259DC41800B2E008 /* Preview Assets.xcassets */; };
 		CBCA530D259DC41800B2E008 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBCA530B259DC41800B2E008 /* LaunchScreen.storyboard */; };
+		CBD60CFE259DC7E9008BB5A9 /* ItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60CFD259DC7E9008BB5A9 /* ItemDB.swift */; };
+		CBD60D03259DC8C5008BB5A9 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = CBD60D02259DC8C5008BB5A9 /* FSCalendar */; };
+		CBD60D07259DC917008BB5A9 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = CBD60D06259DC917008BB5A9 /* KeyboardObserving */; };
+		CBD60D0B259DC930008BB5A9 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBD60D0A259DC930008BB5A9 /* SwiftUICharts */; };
+		CBD60D0E259DC94C008BB5A9 /* ItemDBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D0D259DC94C008BB5A9 /* ItemDBKeys.swift */; };
+		CBD60D12259DC995008BB5A9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D11259DC995008BB5A9 /* Item.swift */; };
+		CBD60D17259DCA07008BB5A9 /* RealmPersistentInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */; };
+		CBD60D1B259DCA9F008BB5A9 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D1A259DCA9F008BB5A9 /* ItemStore.swift */; };
 		D565336E6F7E866FAC844F41 /* Pods_ForYourSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +34,11 @@
 		CBCA5309259DC41800B2E008 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CBCA530C259DC41800B2E008 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBCA530E259DC41800B2E008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBD60CFD259DC7E9008BB5A9 /* ItemDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDB.swift; sourceTree = "<group>"; };
+		CBD60D0D259DC94C008BB5A9 /* ItemDBKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDBKeys.swift; sourceTree = "<group>"; };
+		CBD60D11259DC995008BB5A9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistentInitializer.swift; sourceTree = "<group>"; };
+		CBD60D1A259DCA9F008BB5A9 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForYourSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB50873D281E6E085EF2DDA3 /* Pods-ForYourSupport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.debug.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -36,6 +49,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D565336E6F7E866FAC844F41 /* Pods_ForYourSupport.framework in Frameworks */,
+				CBD60D0B259DC930008BB5A9 /* SwiftUICharts in Frameworks */,
+				CBD60D03259DC8C5008BB5A9 /* FSCalendar in Frameworks */,
+				CBD60D07259DC917008BB5A9 /* KeyboardObserving in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,7 +64,6 @@
 				FB50873D281E6E085EF2DDA3 /* Pods-ForYourSupport.debug.xcconfig */,
 				C92C77B8FD3D2232A8EA509D /* Pods-ForYourSupport.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -84,6 +99,8 @@
 				CBCA5300259DC41700B2E008 /* AppDelegate.swift */,
 				CBCA5302259DC41700B2E008 /* SceneDelegate.swift */,
 				CBCA5304259DC41700B2E008 /* ContentView.swift */,
+				CBD60D15259DC9D3008BB5A9 /* RealmDB */,
+				CBD60CFC259DC7D2008BB5A9 /* Models */,
 				CBCA5306259DC41800B2E008 /* Assets.xcassets */,
 				CBCA530B259DC41800B2E008 /* LaunchScreen.storyboard */,
 				CBCA530E259DC41800B2E008 /* Info.plist */,
@@ -98,6 +115,25 @@
 				CBCA5309259DC41800B2E008 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CBD60CFC259DC7D2008BB5A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBD60D11259DC995008BB5A9 /* Item.swift */,
+				CBD60CFD259DC7E9008BB5A9 /* ItemDB.swift */,
+				CBD60D0D259DC94C008BB5A9 /* ItemDBKeys.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CBD60D15259DC9D3008BB5A9 /* RealmDB */ = {
+			isa = PBXGroup;
+			children = (
+				CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */,
+				CBD60D1A259DCA9F008BB5A9 /* ItemStore.swift */,
+			);
+			path = RealmDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +154,11 @@
 			dependencies = (
 			);
 			name = ForYourSupport;
+			packageProductDependencies = (
+				CBD60D02259DC8C5008BB5A9 /* FSCalendar */,
+				CBD60D06259DC917008BB5A9 /* KeyboardObserving */,
+				CBD60D0A259DC930008BB5A9 /* SwiftUICharts */,
+			);
 			productName = ForYourSupport;
 			productReference = CBCA52FD259DC41700B2E008 /* ForYourSupport.app */;
 			productType = "com.apple.product-type.application";
@@ -145,6 +186,11 @@
 				Base,
 			);
 			mainGroup = CBCA52F4259DC41700B2E008;
+			packageReferences = (
+				CBD60D01259DC8C5008BB5A9 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				CBD60D05259DC917008BB5A9 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+				CBD60D09259DC930008BB5A9 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = CBCA52FE259DC41700B2E008 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -214,8 +260,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD60CFE259DC7E9008BB5A9 /* ItemDB.swift in Sources */,
 				CBCA5301259DC41700B2E008 /* AppDelegate.swift in Sources */,
+				CBD60D17259DCA07008BB5A9 /* RealmPersistentInitializer.swift in Sources */,
 				CBCA5303259DC41700B2E008 /* SceneDelegate.swift in Sources */,
+				CBD60D0E259DC94C008BB5A9 /* ItemDBKeys.swift in Sources */,
+				CBD60D12259DC995008BB5A9 /* Item.swift in Sources */,
+				CBD60D1B259DCA9F008BB5A9 /* ItemStore.swift in Sources */,
 				CBCA5305259DC41700B2E008 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +467,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CBD60D01259DC8C5008BB5A9 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
+		CBD60D05259DC917008BB5A9 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nickffox/KeyboardObserving.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+		CBD60D09259DC930008BB5A9 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBD60D02259DC8C5008BB5A9 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBD60D01259DC8C5008BB5A9 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		CBD60D06259DC917008BB5A9 /* KeyboardObserving */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBD60D05259DC917008BB5A9 /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
+			productName = KeyboardObserving;
+		};
+		CBD60D0A259DC930008BB5A9 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBD60D09259DC930008BB5A9 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CBCA52F5259DC41700B2E008 /* Project object */;
 }
