@@ -32,6 +32,7 @@ struct NumberTypeListView: View {
                     .padding()
                 Spacer()
             }
+            .padding()
             
         }
         Spacer()
@@ -58,7 +59,7 @@ class calendars: UIViewController, FSCalendarDelegate{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendar.scope = .week
-        calendar.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.width)
+        calendar.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: 200)
         view.addSubview(calendar)
     }
 }

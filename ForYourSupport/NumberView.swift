@@ -12,6 +12,7 @@ struct NumberView: View {
     @State var isOnToggle = false
     @State var isOnToggle2 = false
     @State var isOnToggle3 = false
+    @ObservedObject var vm = ViewModel()
     @EnvironmentObject var store: ItemStore
     let item: Item!
     var body: some View {
@@ -34,7 +35,7 @@ struct NumberView: View {
                 Button(action: {
                     self.isOnToggle.toggle()
                 }, label: {
-                    Text("tap")
+                    Text("あなたの\(item.name)は\(vm.value)")
                 })
                 .sheet(isPresented: $isOnToggle) {
                     ModalView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))

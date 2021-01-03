@@ -31,11 +31,17 @@ struct NumberInput_Previews: PreviewProvider {
     }
 }
 
+class ViewModel: ObservableObject {
+    @Published var value = ""
+}
+
+
 
 struct ModalView: View {
     @State var number = ""
     @EnvironmentObject var store: ItemStore
     let item: Item!
+    @ObservedObject var vm = ViewModel()
     var body: some View {
         
         VStack {
@@ -47,7 +53,7 @@ struct ModalView: View {
                 Text(item.name)
                 Spacer()
             }
-            TextField("数値を入力してください", text: $number)
+            TextField("数値を入力してください", text: $vm.value)
                 .keyboardType(.decimalPad)
                 .padding()
         }
