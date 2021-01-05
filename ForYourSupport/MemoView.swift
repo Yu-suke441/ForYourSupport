@@ -12,6 +12,7 @@ struct MemoView: View {
     @State var isOnToggle = false
     @EnvironmentObject var store: ItemStore
     let item: Item!
+    @ObservedObject var vm2 = ViewModel2()
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -32,7 +33,7 @@ struct MemoView: View {
                 Button(action: {
                     self.isOnToggle.toggle()
                 }, label: {
-                    Text("tap")
+                    Text("今日の:\(vm2.content)").font(.title)
                 })
                 .sheet(isPresented: $isOnToggle) {
                     CharacterInputView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))

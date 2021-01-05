@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+class ViewModel3: ObservableObject {
+    @Published var shoppingMenu = ""
+    @Published var shoppingMoney = ""
+}
+
 struct ShoppingInputView: View {
     @EnvironmentObject var store: ItemStore
     let item: Item!
-    @State var shoppingMenu = ""
-    @State var shoppingMoney = ""
+    @ObservedObject var vm3 = ViewModel3()
     var body: some View {
         VStack {
             HStack{
@@ -27,14 +31,14 @@ struct ShoppingInputView: View {
                 Spacer()
             }
             
-            TextField("買ったものを入力してください", text: $shoppingMenu)
+            TextField("買ったものを入力してください", text: $vm3.shoppingMenu)
                 .padding()
             HStack {
                 Text("買った金額")
                     .padding()
                 Spacer()
             }
-            TextField("金額を入力しください", text: $shoppingMoney)
+            TextField("金額を入力しください", text: $vm3.shoppingMoney)
                 .keyboardType(.decimalPad)
                 .padding()
         }

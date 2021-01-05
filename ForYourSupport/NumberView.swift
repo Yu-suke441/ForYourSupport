@@ -12,7 +12,7 @@ struct NumberView: View {
     @State var isOnToggle = false
     @State var isOnToggle2 = false
     @State var isOnToggle3 = false
-    @ObservedObject var vm = ViewModel()
+    @State var value = ""
     @EnvironmentObject var store: ItemStore
     let item: Item!
     var body: some View {
@@ -32,13 +32,14 @@ struct NumberView: View {
             
             HStack {
                 Spacer()
+                
                 Button(action: {
                     self.isOnToggle.toggle()
-                }, label: {
-                    Text("あなたの\(item.name)は\(vm.value)")
-                })
+                }) {
+                    Text("\(item.name):\(value)")
+                }
                 .sheet(isPresented: $isOnToggle) {
-                    ModalView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))
+                    ModalView(number: $value, item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))
                 }
                 
                 

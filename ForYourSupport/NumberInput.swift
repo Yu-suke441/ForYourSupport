@@ -7,19 +7,19 @@
 
 import SwiftUI
 import KeyboardObserving
+import Combine
 
 struct NumberInput: View {
     
     @State private var showingModal = false
-    
-    
+    @State private var value = ""
     var body: some View {
         Button(action: {
             self.showingModal.toggle()
         }) {
             Text("Show Modal")
         }.sheet(isPresented: $showingModal) {
-            ModalView(item: Item(id: 1, name: "", icon_file: "", record_type: "", odr: 1)) // 仮コード
+            ModalView(number: $value, item: Item(id: 1, name: "", icon_file: "", record_type: "", odr: 1)) // 仮コード
             
         }
     }
@@ -31,17 +31,21 @@ struct NumberInput_Previews: PreviewProvider {
     }
 }
 
-class ViewModel: ObservableObject {
-    @Published var value = ""
+class MyData: ObservableObject {
+    let objectWillChange = ObservableObjectPublisher()
+    var score = 0 {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 }
 
 
 
 struct ModalView: View {
-    @State var number = ""
+    @Binding var number : String
     @EnvironmentObject var store: ItemStore
     let item: Item!
-    @ObservedObject var vm = ViewModel()
     var body: some View {
         
         VStack {
@@ -53,19 +57,16 @@ struct ModalView: View {
                 Text(item.name)
                 Spacer()
             }
-            TextField("数値を入力してください", text: $vm.value)
-                .keyboardType(.decimalPad)
+            TextField("数値を入力してください", text: $number)
+                .keyboardType(.numbersAndPunctuation)
                 .padding()
+            
+
         }
         .keyboardObserving()
         
     }
 }
 
-struct ModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        ModalView(item: Item(id: 1, name: "体重(kg)", icon_file: "weight-scale", record_type: "number", odr: 1)) // 仮コード
-    }
-}
+
 

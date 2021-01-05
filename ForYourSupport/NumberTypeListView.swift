@@ -31,8 +31,13 @@ struct NumberTypeListView: View {
                 Text("\(selectDate, formatter: dateFormatter)")
                     .padding()
                 Spacer()
+            
             }
-            .padding()
+            HStack {
+                Text("test")
+                    Spacer()
+                    
+            }.padding()
             
         }
         Spacer()

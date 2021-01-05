@@ -60,14 +60,17 @@ class MultilineFieldCoordinator : NSObject, UITextViewDelegate {
 }
 
 
-
+class ViewModel2: ObservableObject{
+    @Published var content: String = ""
+}
 
 
 
 struct CharacterInputView: View {
-    @State var content = ""
+//    @State var content = ""
     @EnvironmentObject var store: ItemStore
     let item: Item!
+    @ObservedObject var vm2 = ViewModel2()
     var body: some View {
             VStack {
                 HStack{
@@ -77,10 +80,10 @@ struct CharacterInputView: View {
                         .padding()
                     Text(item.name)
                 }
-                MultilineField(text: $content, onEditingChanged: update)
+                MultilineField(text: $vm2.content, onEditingChanged: update)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.803921568627451, green: 0.803921568627451, blue: 0.803921568627451, alpha: 1.0))))
                     .padding()
-                Text(content)
+                Text("\(vm2.content)")
             }
         }
 
