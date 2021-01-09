@@ -36,7 +36,7 @@ struct NumberView: View {
                 Button(action: {
                     self.isOnToggle.toggle()
                 }) {
-                    Text("\(item.name):\(value)")
+                    Text("\(item.name):\(value)").font(.title)
                 }
                 .sheet(isPresented: $isOnToggle) {
                     ModalView(number: $value, item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))
@@ -73,8 +73,9 @@ struct NumberView: View {
             }
             
         }
-        .background(Color(.red))
+        .background(Color(.white))
         .frame(maxWidth: .infinity)
+        
     }
 }
 

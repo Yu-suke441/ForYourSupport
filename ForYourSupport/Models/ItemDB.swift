@@ -19,7 +19,19 @@ class ItemDB: Object {
     
     @objc dynamic var odr = 0
     
+    let numbers = List<NumberDB>()
+    
+    let memos = List<MemoDB>()
+    
+    let shoppings = List<ShoppingDB>()
+
+    
     override static func primaryKey() -> String? {
         return "id"
     }
 }
+
+
+
+
+

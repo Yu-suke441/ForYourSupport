@@ -12,7 +12,7 @@ struct MemoView: View {
     @State var isOnToggle = false
     @EnvironmentObject var store: ItemStore
     let item: Item!
-    @ObservedObject var vm2 = ViewModel2()
+    @State var contents = ""
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -32,11 +32,13 @@ struct MemoView: View {
                 Spacer()
                 Button(action: {
                     self.isOnToggle.toggle()
-                }, label: {
-                    Text("今日の:\(vm2.content)").font(.title)
-                })
+                }) {
+                    Text("\(item.name):\(contents)")
+                        .font(.title)
+                        .lineLimit(1)
+                }
                 .sheet(isPresented: $isOnToggle) {
-                    CharacterInputView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))
+                    CharacterInputView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr), content: $contents)
                 }
                 
                 Spacer()
@@ -56,7 +58,7 @@ struct MemoView: View {
             }
             
         }
-        .background(Color(.red))
+        .background(Color(.white))
         .frame(maxWidth: .infinity)
     }
 }

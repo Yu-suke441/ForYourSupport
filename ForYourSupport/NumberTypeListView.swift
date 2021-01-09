@@ -22,6 +22,9 @@ struct NumberTypeListView: View {
     }
     
     
+    
+    
+   
     var body: some View {
         VStack {
             CalendarController()
@@ -30,11 +33,16 @@ struct NumberTypeListView: View {
             HStack {
                 Text("\(selectDate, formatter: dateFormatter)")
                     .padding()
+              
                 Spacer()
             
             }
             HStack {
-                Text("test")
+                VStack {
+                    VStack {
+                        Text("test")
+                    }
+                }
                     Spacer()
                     
             }.padding()
@@ -55,6 +63,8 @@ struct NumberTypeListView_Previews: PreviewProvider {
 
 class calendars: UIViewController, FSCalendarDelegate{
     var calendar = FSCalendar()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +77,8 @@ class calendars: UIViewController, FSCalendarDelegate{
         calendar.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: 200)
         view.addSubview(calendar)
     }
+    
+    
 }
 
 struct CalendarController: UIViewControllerRepresentable {

@@ -11,8 +11,10 @@ import RealmSwift
 struct ShoppingView: View {
     @State var isOnToggle = false
     @EnvironmentObject var store: ItemStore
+    @State var shoppingMenus = ""
+    @State var shoppingMoneys = ""
     let item: Item!
-    @ObservedObject var vm3 = ViewModel3()
+   
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -31,14 +33,14 @@ struct ShoppingView: View {
                 Spacer()
                 Button(action: {
                     self.isOnToggle.toggle()
-                }, label: {
+                }) {
                     VStack {
-                        Text("買ったものは\(vm3.shoppingMenu)").font(.title)
-                        Text("買った金額は\(vm3.shoppingMoney)").font(.title)
+                        Text("買ったもの:\(shoppingMenus)").font(.title)
+                        Text("買った金額:\(shoppingMoneys)").font(.title)
                     }
-                })
+                }
                 .sheet(isPresented: $isOnToggle) {
-                    ShoppingInputView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))
+                    ShoppingInputView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr), shoppingMenu: $shoppingMenus,shoppingMoney: $shoppingMoneys)
                 }
                 Spacer()
                 
@@ -57,7 +59,7 @@ struct ShoppingView: View {
             }
             
         }
-        .background(Color(.red))
+        .background(Color(.white))
         .frame(maxWidth: .infinity)
         
     }

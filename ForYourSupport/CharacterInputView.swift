@@ -60,9 +60,7 @@ class MultilineFieldCoordinator : NSObject, UITextViewDelegate {
 }
 
 
-class ViewModel2: ObservableObject{
-    @Published var content: String = ""
-}
+
 
 
 
@@ -70,7 +68,8 @@ struct CharacterInputView: View {
 //    @State var content = ""
     @EnvironmentObject var store: ItemStore
     let item: Item!
-    @ObservedObject var vm2 = ViewModel2()
+    @Binding var content: String
+    
     var body: some View {
             VStack {
                 HStack{
@@ -80,10 +79,10 @@ struct CharacterInputView: View {
                         .padding()
                     Text(item.name)
                 }
-                MultilineField(text: $vm2.content, onEditingChanged: update)
+                MultilineField(text: $content, onEditingChanged: update)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.803921568627451, green: 0.803921568627451, blue: 0.803921568627451, alpha: 1.0))))
                     .padding()
-                Text("\(vm2.content)")
+                Text("\(content)")
             }
         }
 
@@ -93,10 +92,4 @@ struct CharacterInputView: View {
             //document.updateChangeCount(.done)
         }
     }
-
-struct CharacterInputView_Previews: PreviewProvider {
-    static var previews: some View {
-        CharacterInputView(item: Item(id: 1, name: "", icon_file: "", record_type: "", odr: 1))
-    }
-}
 
