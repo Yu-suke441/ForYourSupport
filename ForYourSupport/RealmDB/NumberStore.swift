@@ -17,32 +17,40 @@ final class NumberStore: ObservableObject {
     }
     
     
-    var items: [Number] {
+    var numbers: [Number] {
         numberResults.map(Number.init)
     }
     
+    @EnvironmentObject var store: ItemStore
+    var item: Item!
 }
+
+
 
 extension NumberStore {
     // データ追加
     func create(item_id: Int, value: Float, recorded_at: Date) {
         objectWillChange.send()
-        
-        do {
-            let realm = try! Realm()
-            let numberDB = NumberDB()
-            numberDB.id = UUID().hashValue
-            numberDB.item_id = item_id
-            numberDB.value = Double(value)
-            numberDB.recorded_at = recorded_at
-            
+        let realm = try! Realm()
             try! realm.write {
-                realm.add(numberDB)
+                
+                let itemDB = ItemDB()
+                
+                let numberDB = NumberDB()
+                numberDB.id = UUID().hashValue
+                numberDB.item_id = item_id
+                numberDB.value = Double(value)
+                numberDB.recorded_at = recorded_at
+                
+                
+                itemDB.numbers.append(numberDB)
+                
+                realm.add(itemDB)
             }
-        } catch let error {
-            print(error.localizedDescription)
-        }
+        
     }
+    
+    
     
     func update(number: Number) {
         objectWillChange.send()

@@ -10,13 +10,14 @@ import RealmSwift
 
 struct ContentView: View {
     @EnvironmentObject var store: ItemStore
-
+    @EnvironmentObject var store2: NumberStore
+   
     var body: some View {
         VStack(spacing: 0) {
             Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)).edgesIgnoringSafeArea(.top).frame(height:0)
                 
             NavigationBarView()
-            ItemListView(items: store.items)
+            ItemListView(items: store.items, numbers: store2.numbers)
                 
             .padding()
         }.background(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)))
@@ -24,6 +25,9 @@ struct ContentView: View {
         .onAppear() {
             print(Realm.Configuration.defaultConfiguration.fileURL)
             
+            var itemConfig = Realm.Configuration()
+            itemConfig.fileURL = itemConfig.fileURL!.deletingLastPathComponent()
+                .appendingPathComponent("item.realm")
             
             
             

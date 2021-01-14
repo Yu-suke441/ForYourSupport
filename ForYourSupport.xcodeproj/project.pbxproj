@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB90E14925AD2A8C004D36C7 /* NumberTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */; };
 		CBA0E58D259DD9E800760F40 /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E58C259DD9E800760F40 /* ItemRowView.swift */; };
 		CBA0E596259DDA9200760F40 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E595259DDA9200760F40 /* CategoryView.swift */; };
 		CBA0E599259DDAA900760F40 /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E598259DDAA900760F40 /* NumberView.swift */; };
@@ -16,7 +17,6 @@
 		CBA0E5A5259DDAE100760F40 /* NumberInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5A4259DDAE100760F40 /* NumberInput.swift */; };
 		CBA0E5A8259DDAF400760F40 /* CharacterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5A7259DDAF400760F40 /* CharacterInputView.swift */; };
 		CBA0E5AC259DDB1200760F40 /* ShoppingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */; };
-		CBA0E5AF259DDC3800760F40 /* NumberTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5AE259DDC3800760F40 /* NumberTypeListView.swift */; };
 		CBA0E5B2259DDC9500760F40 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5B1259DDC9500760F40 /* NavigationBarView.swift */; };
 		CBA0E5B5259DDCF700760F40 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5B4259DDCF700760F40 /* ItemListView.swift */; };
 		CBA0E5BC259DE15100760F40 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E5BB259DE15100760F40 /* ItemStore.swift */; };
@@ -33,6 +33,7 @@
 		CBD60D0E259DC94C008BB5A9 /* ItemDBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D0D259DC94C008BB5A9 /* ItemDBKeys.swift */; };
 		CBD60D12259DC995008BB5A9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D11259DC995008BB5A9 /* Item.swift */; };
 		CBD60D17259DCA07008BB5A9 /* RealmPersistentInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */; };
+		CBEA43E025ABE6F900FC8AF5 /* ItemList.realm in Resources */ = {isa = PBXBuildFile; fileRef = CBEA43DF25ABE6F900FC8AF5 /* ItemList.realm */; };
 		CBEF918125A9C4E00021AB6A /* NumberDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF918025A9C4E00021AB6A /* NumberDB.swift */; };
 		CBEF918425A9C51F0021AB6A /* MemoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF918325A9C51F0021AB6A /* MemoDB.swift */; };
 		CBEF918725A9C5510021AB6A /* ShoppingDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF918625A9C5510021AB6A /* ShoppingDB.swift */; };
@@ -41,11 +42,13 @@
 		CBEF919125A9C7780021AB6A /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF919025A9C7780021AB6A /* Shopping.swift */; };
 		CBEF919425A9C8950021AB6A /* NumberStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF919325A9C8950021AB6A /* NumberStore.swift */; };
 		CBEF919825A9D0D50021AB6A /* NumberDBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF919725A9D0D50021AB6A /* NumberDBKeys.swift */; };
+		CBEF91A425A9D9F10021AB6A /* MemoTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF91A325A9D9F10021AB6A /* MemoTypeListView.swift */; };
 		D565336E6F7E866FAC844F41 /* Pods_ForYourSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C92C77B8FD3D2232A8EA509D /* Pods-ForYourSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.release.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.release.xcconfig"; sourceTree = "<group>"; };
+		CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTypeListView.swift; sourceTree = "<group>"; };
 		CBA0E58C259DD9E800760F40 /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
 		CBA0E595259DDA9200760F40 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		CBA0E598259DDAA900760F40 /* NumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
@@ -55,7 +58,6 @@
 		CBA0E5A4259DDAE100760F40 /* NumberInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInput.swift; sourceTree = "<group>"; };
 		CBA0E5A7259DDAF400760F40 /* CharacterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInputView.swift; sourceTree = "<group>"; };
 		CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingInputView.swift; sourceTree = "<group>"; };
-		CBA0E5AE259DDC3800760F40 /* NumberTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTypeListView.swift; sourceTree = "<group>"; };
 		CBA0E5B1259DDC9500760F40 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		CBA0E5B4259DDCF700760F40 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
 		CBA0E5BB259DE15100760F40 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		CBD60D0D259DC94C008BB5A9 /* ItemDBKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDBKeys.swift; sourceTree = "<group>"; };
 		CBD60D11259DC995008BB5A9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistentInitializer.swift; sourceTree = "<group>"; };
+		CBEA43DF25ABE6F900FC8AF5 /* ItemList.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = ItemList.realm; sourceTree = "<group>"; };
 		CBEF918025A9C4E00021AB6A /* NumberDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberDB.swift; sourceTree = "<group>"; };
 		CBEF918325A9C51F0021AB6A /* MemoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDB.swift; sourceTree = "<group>"; };
 		CBEF918625A9C5510021AB6A /* ShoppingDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDB.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		CBEF919025A9C7780021AB6A /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 		CBEF919325A9C8950021AB6A /* NumberStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberStore.swift; sourceTree = "<group>"; };
 		CBEF919725A9D0D50021AB6A /* NumberDBKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberDBKeys.swift; sourceTree = "<group>"; };
+		CBEF91A325A9D9F10021AB6A /* MemoTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTypeListView.swift; sourceTree = "<group>"; };
 		DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForYourSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB50873D281E6E085EF2DDA3 /* Pods-ForYourSupport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.debug.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +122,7 @@
 		CBCA52F4259DC41700B2E008 = {
 			isa = PBXGroup;
 			children = (
+				CBEA43DD25ABE67800FC8AF5 /* Seed */,
 				CBCA52FF259DC41700B2E008 /* ForYourSupport */,
 				CBCA52FE259DC41700B2E008 /* Products */,
 				440AB1DE58751C727AEDE30F /* Pods */,
@@ -150,7 +155,8 @@
 				CBA0E5A4259DDAE100760F40 /* NumberInput.swift */,
 				CBA0E5A7259DDAF400760F40 /* CharacterInputView.swift */,
 				CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */,
-				CBA0E5AE259DDC3800760F40 /* NumberTypeListView.swift */,
+				CBEF91A325A9D9F10021AB6A /* MemoTypeListView.swift */,
+				CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */,
 				CBD60D15259DC9D3008BB5A9 /* RealmDB */,
 				CBD60CFC259DC7D2008BB5A9 /* Models */,
 				CBCA5306259DC41800B2E008 /* Assets.xcassets */,
@@ -194,6 +200,14 @@
 				CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */,
 			);
 			path = RealmDB;
+			sourceTree = "<group>";
+		};
+		CBEA43DD25ABE67800FC8AF5 /* Seed */ = {
+			isa = PBXGroup;
+			children = (
+				CBEA43DF25ABE6F900FC8AF5 /* ItemList.realm */,
+			);
+			path = Seed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBCA530D259DC41800B2E008 /* LaunchScreen.storyboard in Resources */,
+				CBEA43E025ABE6F900FC8AF5 /* ItemList.realm in Resources */,
 				CBCA530A259DC41800B2E008 /* Preview Assets.xcassets in Resources */,
 				CBCA5307259DC41800B2E008 /* Assets.xcassets in Resources */,
 			);
@@ -324,7 +339,6 @@
 				CBEF918425A9C51F0021AB6A /* MemoDB.swift in Sources */,
 				CBCA5301259DC41700B2E008 /* AppDelegate.swift in Sources */,
 				CBA0E59F259DDABF00760F40 /* ShoppingView.swift in Sources */,
-				CBA0E5AF259DDC3800760F40 /* NumberTypeListView.swift in Sources */,
 				CBEF918725A9C5510021AB6A /* ShoppingDB.swift in Sources */,
 				CBA0E58D259DD9E800760F40 /* ItemRowView.swift in Sources */,
 				CBEF919125A9C7780021AB6A /* Shopping.swift in Sources */,
@@ -340,11 +354,13 @@
 				CBA0E5A2259DDACF00760F40 /* GraphView.swift in Sources */,
 				CBEF919425A9C8950021AB6A /* NumberStore.swift in Sources */,
 				CBA0E5AC259DDB1200760F40 /* ShoppingInputView.swift in Sources */,
+				CB90E14925AD2A8C004D36C7 /* NumberTypeListView.swift in Sources */,
 				CBA0E5B2259DDC9500760F40 /* NavigationBarView.swift in Sources */,
 				CBA0E5A8259DDAF400760F40 /* CharacterInputView.swift in Sources */,
 				CBA0E599259DDAA900760F40 /* NumberView.swift in Sources */,
 				CBA0E59C259DDAB300760F40 /* MemoView.swift in Sources */,
 				CBEF919825A9D0D50021AB6A /* NumberDBKeys.swift in Sources */,
+				CBEF91A425A9D9F10021AB6A /* MemoTypeListView.swift in Sources */,
 				CBCA5305259DC41700B2E008 /* ContentView.swift in Sources */,
 				CBA0E5BC259DE15100760F40 /* ItemStore.swift in Sources */,
 				CBA0E5B5259DDCF700760F40 /* ItemListView.swift in Sources */,

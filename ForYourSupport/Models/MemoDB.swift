@@ -17,7 +17,7 @@ class MemoDB: Object {
     
     @objc dynamic var recorded_date = Date()
     
-    @objc dynamic var owner: ItemDB?
+    let itemDBs = LinkingObjects(fromType: ItemDB.self, property: "memos")
     
     override static func primaryKey() -> String? {
         return "id"

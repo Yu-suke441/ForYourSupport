@@ -8,28 +8,9 @@
 import SwiftUI
 import KeyboardObserving
 import Combine
+import RealmSwift
 
-struct NumberInput: View {
-    
-    @State private var showingModal = false
-    @State private var value = ""
-    var body: some View {
-        Button(action: {
-            self.showingModal.toggle()
-        }) {
-            Text("Show Modal")
-        }.sheet(isPresented: $showingModal) {
-            ModalView(number: $value, item: Item(id: 1, name: "", icon_file: "", record_type: "", odr: 1)) // 仮コード
-            
-        }
-    }
-}
 
-struct NumberInput_Previews: PreviewProvider {
-    static var previews: some View {
-        NumberInput()
-    }
-}
 
 class MyData: ObservableObject {
     let objectWillChange = ObservableObjectPublisher()
@@ -43,9 +24,12 @@ class MyData: ObservableObject {
 
 
 struct ModalView: View {
-    @Binding var number : String
+    @Binding var number: Int
+    @State var message = ""
     @EnvironmentObject var store: ItemStore
     let item: Item!
+    @EnvironmentObject var numberStore: NumberStore
+    var inputNumber = 0
     var body: some View {
         
         VStack {
@@ -57,16 +41,47 @@ struct ModalView: View {
                 Text(item.name)
                 Spacer()
             }
-            TextField("数値を入力してください", text: $number)
+            TextField("数値を入力してください", text: $number.IntToStrDef(Int(Double(number))),
+                      // リターンキーが押された時の処理
+                      onCommit: {
+                        self.message = "あなたの\(item.name)は\(self.number)です"
+                        
+                        let realm = try! Realm()
+                        
+                       
+                        
+                        let item = realm.objects(ItemDB.self).filter("name == '体重(kg)'").first
+                        let num = NumberDB()
+                        num.id = item!.id
+                        num.item_id = 2
+                        num.value = Double(number)
+                        num.recorded_at = Date()
+                        
+                        
+                        try! realm.write {
+                            realm.add(num, update: .all)
+                            item?.numbers.append(num)
+    
+                        }
+                        
+                        
+                      })
                 .keyboardType(.numbersAndPunctuation)
                 .padding()
             
-
+            Text(message)
         }
         .keyboardObserving()
         
     }
 }
 
-
-
+extension Binding where Value == Int {
+    func IntToStrDef(_ def: Int) -> Binding<String> {
+        return Binding<String>(get: {
+            return String(self.wrappedValue)
+        }) { value in
+            self.wrappedValue = Int(Double(value) ?? Double(def))
+        }
+    }
+}

@@ -11,6 +11,8 @@ struct ItemListView: View {
     @EnvironmentObject var store: ItemStore
     let items: [Item]
     
+    @EnvironmentObject var store2: NumberStore
+    let numbers: [Number]
     
     var body: some View {
         var columns: [GridItem] =

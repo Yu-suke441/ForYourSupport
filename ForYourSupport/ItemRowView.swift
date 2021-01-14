@@ -13,7 +13,7 @@ struct ItemRowView: View {
     let item: Item
     
     var body: some View {
-        CategoryView(item: item)
+        CategoryView(item: item, value: 0)
         
     }
 }

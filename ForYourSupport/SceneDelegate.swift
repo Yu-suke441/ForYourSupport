@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           // Realmを最初に読み込むところ
           let contentView = ContentView()
             .environmentObject(ItemStore(realm: realm))
+            .environmentObject(NumberStore(realm: realm))
           window.rootViewController = UIHostingController(rootView: contentView)
           self.window = window
           window.makeKeyAndVisible()

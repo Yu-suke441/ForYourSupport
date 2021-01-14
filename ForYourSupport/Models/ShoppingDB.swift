@@ -19,7 +19,7 @@ class ShoppingDB: Object {
     
     @objc dynamic var recorded_date = Date()
     
-    @objc dynamic var owner: ItemDB?
+    let itemDBs = LinkingObjects(fromType: ItemDB.self, property: "shoppings")
     
     override static func primaryKey() -> String? {
         return "id"
