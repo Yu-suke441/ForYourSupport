@@ -12,7 +12,7 @@ struct NumberView: View {
     @State var isOnToggle = false
     @State var isOnToggle2 = false
     @State var isOnToggle3 = false
-    @State var value : Int
+    @State var value : Double
     @EnvironmentObject var store: ItemStore
     let item: Item!
     var body: some View {
@@ -64,7 +64,7 @@ struct NumberView: View {
                             .frame(width:50, height: 50)
                     })
                     .sheet(isPresented: $isOnToggle3) {
-                        NumberTypeListView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr), value: value)
+                        NumberTypeListView(viewModel: NumberTypeListViewModel())
                     
                 }.padding()
                 

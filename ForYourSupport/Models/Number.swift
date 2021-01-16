@@ -11,7 +11,7 @@ import Foundation
 struct Number: Identifiable {
     let id : Int
     let item_id: Int
-    let value :Float
+    let value :Double
     let recorded_at: Date
 
 }
@@ -20,7 +20,7 @@ extension Number {
     init(numberDB: NumberDB) {
         id = numberDB.id
         item_id = numberDB.item_id
-        value = Float(numberDB.value)
+        value = numberDB.value
         recorded_at = numberDB.recorded_at
     }
 }

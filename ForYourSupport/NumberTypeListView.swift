@@ -6,34 +6,38 @@
 //
 
 import SwiftUI
-import FSCalendar
+import RealmSwift
 
 struct NumberTypeListView: View {
-    @Environment(\.timeZone) var timeZone
-    
-    @State private var selectDate = Date()
-     
+
+    @ObservedObject var viewModel: NumberTypeListViewModel
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.dateFormat = "yyyy年MM月dd日"
-        formatter.timeZone = timeZone
-       
-        return  formatter
+        formatter.timeStyle = .short
+        return formatter
     }
-    
-    @EnvironmentObject var store: ItemStore
-    let item: Item!
-    
-    @State var value : Int
+    let number = NumberDB()
     
     var body: some View {
-        HStack {
-            Text("\(selectDate, formatter: dateFormatter)")
-            Spacer()
-            Text("\(value)")
-                .font(.title)
-        }.padding()
+        NavigationView {
+            List(viewModel.items) { item in
+                Text(String(item.value))
+                    .onAppear {
+                        self.viewModel.loadNext(item: item)
+                    }
+                
+            }.onAppear {
+                self.viewModel.onAppear()
+            }.navigationBarTitle("検索結果")
+        }
     }
 }
+
+struct NumberTypeListView_Previews: PreviewProvider {
+    static var previews: some View {
+        NumberTypeListView(viewModel: NumberTypeListViewModel())
+        
+    }
+}
+
 

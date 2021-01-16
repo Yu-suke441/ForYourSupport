@@ -28,28 +28,45 @@ final class NumberStore: ObservableObject {
 
 
 extension NumberStore {
+    
+   
     // データ追加
-    func create(item_id: Int, value: Float, recorded_at: Date) {
+    func create(item_id: Int, value: Double, recorded_at: Date) {
         objectWillChange.send()
-        let realm = try! Realm()
+        
+                
+        do {
+            let realm = try! Realm()
+            let itemDB = ItemDB()
+            
+            let numberDB = NumberDB()
+            numberDB.id = newID(realm: realm)
+            numberDB.item_id = item_id
+            numberDB.value = value
+            numberDB.recorded_at = recorded_at
+            
             try! realm.write {
                 
-                let itemDB = ItemDB()
-                
-                let numberDB = NumberDB()
-                numberDB.id = UUID().hashValue
-                numberDB.item_id = item_id
-                numberDB.value = Double(value)
-                numberDB.recorded_at = recorded_at
-                
-                
                 itemDB.numbers.append(numberDB)
-                
-                realm.add(itemDB)
+                realm.add(numberDB)
             }
+            
+        } catch let err {
+            print(err.localizedDescription)
+        }
+            
         
     }
     
+    func newID(realm: Realm) -> Int {
+        if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
+            return number.id + 1
+        } else {
+                return 1
+        }
+    }
+
+        
     
     
     func update(number: Number) {

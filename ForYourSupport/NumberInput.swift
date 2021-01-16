@@ -24,10 +24,10 @@ class MyData: ObservableObject {
 
 
 struct ModalView: View {
-    @Binding var number: Int
+    @Binding var number: Double
     @State var message = ""
     @EnvironmentObject var store: ItemStore
-    let item: Item!
+        let item: Item!
     @EnvironmentObject var numberStore: NumberStore
     var inputNumber = 0
     var body: some View {
@@ -41,27 +41,35 @@ struct ModalView: View {
                 Text(item.name)
                 Spacer()
             }
-            TextField("数値を入力してください", text: $number.IntToStrDef(Int(Double(number))),
+            TextField("数値を入力してください", text: $number.IntToStrDef(Double(number)),
                       // リターンキーが押された時の処理
                       onCommit: {
                         self.message = "あなたの\(item.name)は\(self.number)です"
+                       
+                        func newID(realm: Realm) -> Int {
+                            if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
+                                return number.id + 1
+                            } else {
+                                    return 1
+                            }
+                        }
+                        
                         
                         let realm = try! Realm()
-                        
-                       
-                        
-                        let item = realm.objects(ItemDB.self).filter("name == '体重(kg)'").first
+                                            
                         let num = NumberDB()
-                        num.id = item!.id
-                        num.item_id = 2
-                        num.value = Double(number)
+                        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
+
+                        num.id = newID(realm: realm)
+                        num.item_id = item!.id
+                        
+                        num.value = self.number
                         num.recorded_at = Date()
                         
-                        
-                        try! realm.write {
-                            realm.add(num, update: .all)
-                            item?.numbers.append(num)
-    
+                                        
+                        try! realm.write{
+                            itemDB?.numbers.append(num)
+//                            realm.add(num, update: .modified)
                         }
                         
                         
@@ -76,12 +84,12 @@ struct ModalView: View {
     }
 }
 
-extension Binding where Value == Int {
-    func IntToStrDef(_ def: Int) -> Binding<String> {
+extension Binding where Value == Double {
+    func IntToStrDef(_ def: Double) -> Binding<String> {
         return Binding<String>(get: {
             return String(self.wrappedValue)
         }) { value in
-            self.wrappedValue = Int(Double(value) ?? Double(def))
+            self.wrappedValue = Double(value) ?? Double(def)
         }
     }
 }

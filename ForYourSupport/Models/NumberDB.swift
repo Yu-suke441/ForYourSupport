@@ -8,9 +8,9 @@
 import Foundation
 import RealmSwift
 
-class NumberDB: Object {
+class NumberDB: Object , Identifiable{
     
-    @objc dynamic var id = 0
+    @objc dynamic var id:Int = 0
     
     @objc dynamic var item_id = 1
     

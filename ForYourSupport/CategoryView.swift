@@ -14,7 +14,7 @@ import RealmSwift
 struct CategoryView: View {
     @EnvironmentObject var store: ItemStore
     let item: Item!
-    @State var value: Int
+    @State var value: Double
     var body: some View {
         if item.record_type == "Number" {
             NumberView(value: value, item: item)
