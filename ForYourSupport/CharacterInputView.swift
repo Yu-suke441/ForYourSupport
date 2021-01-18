@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct MultilineField: UIViewRepresentable {
     @Binding var text: String
@@ -67,6 +68,7 @@ class MultilineFieldCoordinator : NSObject, UITextViewDelegate {
 struct CharacterInputView: View {
 //    @State var content = ""
     @EnvironmentObject var store: ItemStore
+    @EnvironmentObject var memoStore: MemoStore
     let item: Item!
     @Binding var content: String
     
@@ -82,14 +84,40 @@ struct CharacterInputView: View {
                 MultilineField(text: $content, onEditingChanged: update)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.803921568627451, green: 0.803921568627451, blue: 0.803921568627451, alpha: 1.0))))
                     .padding()
+                    
+                
+                    }
                 Text("\(content)")
+        
             }
-        }
+        
 
         func update(changed: Bool) {
             guard !changed else { return }
-            //document.content = content
-            //document.updateChangeCount(.done)
-        }
-    }
+            func newID(realm: Realm) -> Int {
+                if let number = realm.objects(MemoDB.self).sorted(byKeyPath: "id").last {
+                    return number.id + 1
+                } else {
+                        return 1
+                }
+            }
+            
+            
+            let realm = try! Realm()
+                                
+            let memoDB = MemoDB()
+            let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
 
+            memoDB.id = newID(realm: realm)
+            memoDB.item_id = item!.id
+            
+            memoDB.memo = self.content
+            memoDB.recorded_date = Date()
+            
+                            
+            try! realm.write{
+                itemDB?.memos.append(memoDB)
+//                            realm.add(num, update: .modified)
+            }
+        }
+}
