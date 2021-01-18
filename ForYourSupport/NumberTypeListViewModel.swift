@@ -27,7 +27,7 @@ extension RandomAccessCollection where Self.Element: Identifiable {
 
 
 final class NumberTypeListViewModel: ObservableObject {
-    @Published var items: [NumberDB] = []
+    @Published var numbers: [NumberDB] = []
     @Published var isLoading = false
     var numberTables: Results<NumberDB>!
     
@@ -37,7 +37,7 @@ final class NumberTypeListViewModel: ObservableObject {
     private var currentPage = 1
     
     func loadNext(item: NumberDB) {
-        if items.isLastItem(item) {
+        if numbers.isLastItem(item) {
             self.currentPage += 1
             getNumberList(page: currentPage, perPage: perPage) { [weak self] result in
                     self?.handleResult(result)
@@ -62,7 +62,7 @@ final class NumberTypeListViewModel: ObservableObject {
         
         let realm = try! Realm()
         let results = realm.objects(NumberDB.self)
-        self.items = results.compactMap({ (numberTable) -> NumberDB? in
+        self.numbers = results.compactMap({ (numberTable) -> NumberDB? in
             return numberTable
             
         })
@@ -78,7 +78,7 @@ final class NumberTypeListViewModel: ObservableObject {
             switch result {
             case .success(let items):
                 self.currentPage += 1
-                self.items.append(contentsOf: items)
+                self.numbers.append(contentsOf: items)
             case .failure(let error):
                 self.currentPage = 1
                 print(error)

@@ -20,7 +20,7 @@ struct NumberTypeListView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.items) { item in
+            List(viewModel.numbers) { item in
                 Text(String(item.value))
                     .onAppear {
                         self.viewModel.loadNext(item: item)
