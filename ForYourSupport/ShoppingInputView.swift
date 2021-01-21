@@ -13,31 +13,34 @@ struct ShoppingInputView: View {
     let item: Item!
     @Binding var shoppingMenu: String
     @Binding var shoppingMoney: String
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
-        VStack {
-            HStack{
-                Image(item.icon_file)
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .padding()
-                Text(item.name)
+        
+        NavigationView {
+            List {
+                Section(header: Text("買ったもの")) {
+                    TextField("買ったものを入力してください", text: $shoppingMenu)
+                }
+                Section(header: Text("買った金額")) {
+                    TextField("金額を入力しください", text: $shoppingMoney)
+                }
             }
-            HStack {
-                Text("買ったもの")
-                    .padding()
-                Spacer()
+            .listStyle(GroupedListStyle())
+            .navigationTitle("\(item.name)")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        Text("次へ")
+                    })
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {presentation.wrappedValue.dismiss()}, label: {
+                        Text("キャンセル")
+                    })
+                }
             }
-            
-            TextField("買ったものを入力してください", text: $shoppingMenu)
-                .padding()
-            HStack {
-                Text("買った金額")
-                    .padding()
-                Spacer()
-            }
-            TextField("金額を入力しください", text: $shoppingMoney)
-                .keyboardType(.decimalPad)
-                .padding()
         }
     }
 }

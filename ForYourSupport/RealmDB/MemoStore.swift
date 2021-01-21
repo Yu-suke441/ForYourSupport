@@ -11,7 +11,7 @@ import RealmSwift
 final class MemoStore: ObservableObject {
     
     private var memoResults: Results<MemoDB>
-    
+    @State var character = ""
     // numberResultsにDBのデータをセット
     init(realm: Realm) {
         memoResults = realm.objects(MemoDB.self)
@@ -29,6 +29,7 @@ final class MemoStore: ObservableObject {
 
 
 extension MemoStore {
+   
     
    
     // データ追加
@@ -36,24 +37,21 @@ extension MemoStore {
         objectWillChange.send()
         
                 
-        do {
-            let realm = try! Realm()
-            let itemDB = ItemDB()
+        let realm = try! Realm()
+                                
+        let memoDB = MemoDB()
+        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
+
+        memoDB.id = newID(realm: realm)
+        memoDB.item_id = item!.id
             
-            let memoDB = MemoDB()
-            memoDB.id = newID(realm: realm)
-            memoDB.item_id = item_id
-            memoDB.memo = memo
-            memoDB.recorded_date = recorded_date
-            
-            try! realm.write {
+        memoDB.memo = self.character
+        memoDB.recorded_date = Date()
                 
-                itemDB.memos.append(memoDB)
-                realm.add(memoDB)
-            }
-            
-        } catch let err {
-            print(err.localizedDescription)
+                                
+        try! realm.write{
+            itemDB?.memos.append(memoDB)
+            //realm.add(num, update: .modified)
         }
             
         

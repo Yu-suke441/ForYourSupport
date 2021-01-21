@@ -30,57 +30,63 @@ struct ModalView: View {
         let item: Item!
     @EnvironmentObject var numberStore: NumberStore
     var inputNumber = 0
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
-        
-        VStack {
-            HStack {
-                Image(item.icon_file)
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .padding()
-                Text(item.name)
-                Spacer()
-            }
-            TextField("数値を入力してください", text: $number.IntToStrDef(Double(number)),
-                      // リターンキーが押された時の処理
-                      onCommit: {
-                        self.message = "あなたの\(item.name)は\(self.number)です"
-                       
-                        func newID(realm: Realm) -> Int {
-                            if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
-                                return number.id + 1
-                            } else {
-                                    return 1
-                            }
-                        }
-                        
-                        
-                        let realm = try! Realm()
-                                            
-                        let num = NumberDB()
-                        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
+        NavigationView {
+            List {
+                Section(header: Text(item.name)) {
+                    TextField("数値を入力してください", text: $number.IntToStrDef(Double(number)),
+                            onCommit: {
+                                self.message = "あなたの\(item.name)は\(self.number)です"
+                               
+                                func newID(realm: Realm) -> Int {
+                                    if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
+                                        return number.id + 1
+                                    } else {
+                                            return 1
+                                    }
+                                }
+                                
+                                
+                                let realm = try! Realm()
+                                                    
+                                let num = NumberDB()
+                                let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
 
-                        num.id = newID(realm: realm)
-                        num.item_id = item!.id
-                        
-                        num.value = self.number
-                        num.recorded_at = Date()
-                        
-                                        
-                        try! realm.write{
-                            itemDB?.numbers.append(num)
-//                            realm.add(num, update: .modified)
-                        }
-                        
-                        
-                      })
-                .keyboardType(.numbersAndPunctuation)
-                .padding()
-            
-            Text(message)
+                                num.id = newID(realm: realm)
+                                num.item_id = item!.id
+                                
+                                num.value = self.number
+                                num.recorded_at = Date()
+                                
+                                                
+                                try! realm.write{
+                                    itemDB?.numbers.append(num)
+        //                            realm.add(num, update: .modified)
+                                }
+                                
+                                
+                              })
+                    }
+            }
+            .listStyle(GroupedListStyle())
+            .navigationTitle("\(item.name)")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                    }, label: {
+                        Text("次へ")
+                    })
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {presentation.wrappedValue.dismiss()}, label: {
+                        Text("キャンセル")
+                    })
+                }
+            }
         }
-        .keyboardObserving()
-        
     }
 }
 

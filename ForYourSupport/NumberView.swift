@@ -64,7 +64,7 @@ struct NumberView: View {
                             .frame(width:50, height: 50)
                     })
                     .sheet(isPresented: $isOnToggle3) {
-                        NumberTypeListView(viewModel: NumberTypeListViewModel())
+                        NumberTypeListView(viewModel: NumberTypeListViewModel(item: item))
                     
                 }.padding()
                 

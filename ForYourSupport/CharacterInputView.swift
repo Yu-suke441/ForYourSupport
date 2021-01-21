@@ -68,56 +68,71 @@ class MultilineFieldCoordinator : NSObject, UITextViewDelegate {
 struct CharacterInputView: View {
 //    @State var content = ""
     @EnvironmentObject var store: ItemStore
-    @EnvironmentObject var memoStore: MemoStore
+    @ObservedObject var memoStore: MemoStore
     let item: Item!
+    let memo: Memo!
+    @State var isOnToggle = false
+    @Environment(\.presentationMode) var presentation
     @Binding var content: String
     
     var body: some View {
-            VStack {
-                HStack{
-                    Image(item.icon_file)
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .padding()
-                    Text(item.name)
-                }
-                MultilineField(text: $content, onEditingChanged: update)
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.803921568627451, green: 0.803921568627451, blue: 0.803921568627451, alpha: 1.0))))
-                    .padding()
-                    
-                
-                    }
-                Text("\(content)")
         
-            }
-        
-
-        func update(changed: Bool) {
-            guard !changed else { return }
-            func newID(realm: Realm) -> Int {
-                if let number = realm.objects(MemoDB.self).sorted(byKeyPath: "id").last {
-                    return number.id + 1
-                } else {
-                        return 1
+        NavigationView {
+            List {
+                Section(header: Text(item.name)) {
+                    TextEditor(text: $content)
+                        .frame(width: UIScreen.main.bounds.width, height: 200)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.red,lineWidth: 5)
+                        )
                 }
             }
-            
-            
-            let realm = try! Realm()
-                                
-            let memoDB = MemoDB()
-            let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
-
-            memoDB.id = newID(realm: realm)
-            memoDB.item_id = item!.id
-            
-            memoDB.memo = self.content
-            memoDB.recorded_date = Date()
-            
-                            
-            try! realm.write{
-                itemDB?.memos.append(memoDB)
-//                            realm.add(num, update: .modified)
+            .listStyle(GroupedListStyle())
+            .navigationTitle("\(item.name)")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        update(changed: false)
+                    }, label: {
+                        Text("次へ")
+                    })
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {presentation.wrappedValue.dismiss()}, label: {
+                        Text("キャンセル")
+                    })
+                }
             }
         }
+    }
+
+    func update(changed: Bool) {
+        guard !changed else { return }
+        func newID(realm: Realm) -> Int {
+            if let number = realm.objects(MemoDB.self).sorted(byKeyPath: "id").last {
+                return number.id + 1
+            } else {
+                    return 1
+            }
+        }
+                    
+                
+        let realm = try! Realm()
+                                
+        let memoDB = MemoDB()
+        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
+        
+        memoDB.id = newID(realm: realm)
+        memoDB.item_id = item!.id
+                
+        memoDB.memo = self.content
+        memoDB.recorded_date = Date()
+                    
+                                    
+        try! realm.write{
+            itemDB?.memos.append(memoDB)
+            //realm.add(num, update: .modified)
+        }
+    }
 }

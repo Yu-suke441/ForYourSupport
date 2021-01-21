@@ -12,6 +12,7 @@ struct MemoView: View {
     @State var isOnToggle = false
     @EnvironmentObject var store: ItemStore
     let item: Item!
+    let realm = try! Realm()
     @State var contents = ""
     var body: some View {
         VStack(alignment: .leading) {
@@ -38,7 +39,7 @@ struct MemoView: View {
                         .lineLimit(1)
                 }
                 .sheet(isPresented: $isOnToggle) {
-                    CharacterInputView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr), content: $contents)
+                    CharacterInputView(memoStore: MemoStore(realm: realm), item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr), memo: Memo(memoDB: MemoDB()), content: $contents)
                 }
                 
                 Spacer()

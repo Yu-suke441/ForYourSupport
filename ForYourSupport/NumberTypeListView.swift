@@ -17,7 +17,6 @@ struct NumberTypeListView: View {
         return formatter
     }
     let number = NumberDB()
-    
     var body: some View {
         NavigationView {
             List(viewModel.numbers) { item in
@@ -33,11 +32,11 @@ struct NumberTypeListView: View {
     }
 }
 
-struct NumberTypeListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NumberTypeListView(viewModel: NumberTypeListViewModel())
-        
-    }
-}
-
+//struct NumberTypeListView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        NumberTypeListView(viewModel: NumberTypeListViewModel(item: ))
+//        
+//    }
+//}
+//
 
