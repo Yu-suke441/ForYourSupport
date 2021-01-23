@@ -39,7 +39,11 @@ struct ShoppingInputView: View {
                     })
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {presentation.wrappedValue.dismiss()}, label: {
+                    Button(action: {
+                        presentation.wrappedValue.dismiss()
+                        shoppingMenu = ""
+                        shoppingMoney = 0
+                    }, label: {
                         Text("キャンセル")
                     })
                 }

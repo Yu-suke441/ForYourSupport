@@ -20,15 +20,15 @@ struct NumberTypeListView: View {
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
-        formatter.dateFormat = "dd日"
+        formatter.dateFormat = "MM月dd日"
        
         return  formatter
     }
     
     var body: some View {
         NavigationView {
-            List(viewModel.numbers) { item in
-               
+            List{
+                ForEach(viewModel.numbers, id: \.self) { item in
                     HStack {
                         Text(dateFormatter.string(from: item.recorded_at))
                             .font(.title3)
@@ -39,28 +39,31 @@ struct NumberTypeListView: View {
                         }
         
                     }
-                    .contextMenu(ContextMenu(menuItems: {
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Text("更新")
-                        })
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Text("削除")
-                        })
-                    }))
                     
-                }.onAppear {
-                    self.viewModel.onAppear()
-                }.navigationBarTitle("\(item.name)一覧")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {presentation.wrappedValue.dismiss()}, label: {
-                            Text("戻る")
-                        })
-                    }
+                    
+                }.onDelete(perform: self.deleteRow)
+                
                 }
-            
+                .onAppear {
+                    self.viewModel.onAppear()
+            }
+            .navigationBarTitle("\(item.name)一覧")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {presentation.wrappedValue.dismiss()}, label: {
+                        Text("戻る")
+                    })
+                }
+            }
         }
     }
+    func deleteRow(offsets: IndexSet) {
+        self.viewModel.numbers.remove(atOffsets: offsets)
+    }
+    
+
+     
+    
 }
 
 //struct NumberTypeListView_Previews: PreviewProvider {

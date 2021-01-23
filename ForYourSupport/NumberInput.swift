@@ -57,7 +57,10 @@ struct ModalView: View {
                     })
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {presentation.wrappedValue.dismiss()}, label: {
+                    Button(action: {
+                        presentation.wrappedValue.dismiss()
+                        number = 0
+                    }, label: {
                         Text("キャンセル")
                     })
                 }

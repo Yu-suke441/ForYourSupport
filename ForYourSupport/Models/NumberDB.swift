@@ -14,7 +14,7 @@ class NumberDB: Object , Identifiable{
     
     @objc dynamic var item_id = 1
     
-    @objc dynamic var value:Double = 0.0
+    @objc dynamic var value:Double = 0
     
     @objc dynamic var recorded_at =  Date()
     

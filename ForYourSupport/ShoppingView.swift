@@ -28,6 +28,7 @@ struct ShoppingView: View {
                 Text(item.name)
                     .font(.title)
                     .lineLimit(1)
+                    .foregroundColor(.black)
                 Spacer()
                 
             }.padding()

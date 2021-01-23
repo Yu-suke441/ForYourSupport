@@ -25,6 +25,14 @@ class ItemDB: Object {
     
     let shoppings = List<ShoppingDB>()
 
+    func getNumberArray() -> [Double] {
+        var numberArray = [Double]()
+
+        for number in numbers {
+            numberArray.append(number.value)
+        }
+        return numberArray
+    }
     
     override static func primaryKey() -> String? {
         return "id"

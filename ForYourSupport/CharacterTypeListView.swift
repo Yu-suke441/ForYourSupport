@@ -15,24 +15,28 @@ struct CharacterTypeListView: View {
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
-        formatter.dateFormat = "dd日"
+        formatter.dateFormat = "MM月dd日"
        
         return  formatter
     }
     var body: some View {
         NavigationView {
-            List(viewModel.memos) { item in
-                HStack {
-                    Text(dateFormatter.string(from: item.recorded_date))
-                        .font(.title3)
-                    Divider()
-                    Text(String(item.memo))
-                        .onAppear {
-                            self.viewModel.loadNext(item: item)
+            List{
+                ForEach(viewModel.memos) { item in
+                    HStack {
+                        Text(dateFormatter.string(from: item.recorded_date))
+                            .font(.title3)
+                        Divider()
+                        Text(String(item.memo))
+                            .onAppear {
+                                self.viewModel.loadNext(item: item)
+                        }
                     }
+                    
                 }
-                
-            }.onAppear {
+                .onDelete(perform: self.deleteRow)
+            }
+            .onAppear {
                 self.viewModel.onAppear()
             }.navigationBarTitle("\(item.name)一覧")
             .toolbar {
@@ -43,6 +47,9 @@ struct CharacterTypeListView: View {
                 }
             }
         }
+    }
+    func deleteRow(offsets: IndexSet) {
+        self.viewModel.memos.remove(atOffsets: offsets)
     }
 }
 

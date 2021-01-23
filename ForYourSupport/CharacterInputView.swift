@@ -83,7 +83,7 @@ struct CharacterInputView: View {
                     TextEditor(text: $content)
                         .frame(width: UIScreen.main.bounds.width, height: 200)
                         .overlay(RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.red,lineWidth: 5)
+                                    .stroke(Color.white,lineWidth: 5)
                         )
                 }
             }
@@ -100,7 +100,10 @@ struct CharacterInputView: View {
                     })
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {presentation.wrappedValue.dismiss()}, label: {
+                    Button(action: {
+                            presentation.wrappedValue.dismiss()
+                            content = ""
+                    }, label: {
                         Text("キャンセル")
                     })
                 }

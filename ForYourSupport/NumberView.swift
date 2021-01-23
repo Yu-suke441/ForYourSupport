@@ -26,6 +26,7 @@ struct NumberView: View {
                 Text(item.name)
                     .font(.title)
                     .lineLimit(1)
+                    .foregroundColor(.black)
                 Spacer()
                 
             }.padding()
@@ -54,7 +55,7 @@ struct NumberView: View {
                             .frame(width:50, height: 50)
                     })
                     .sheet(isPresented: $isOnToggle2) {
-                        GraphView()
+                        GraphView(item: item!)
                     }
                     Button(action: {
                         self.isOnToggle3.toggle()
