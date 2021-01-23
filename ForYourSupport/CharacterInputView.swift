@@ -94,6 +94,7 @@ struct CharacterInputView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         update(changed: false)
+                        presentation.wrappedValue.dismiss()
                     }, label: {
                         Text("次へ")
                     })

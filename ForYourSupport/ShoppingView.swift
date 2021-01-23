@@ -10,11 +10,14 @@ import RealmSwift
 
 struct ShoppingView: View {
     @State var isOnToggle = false
+    @State var isOnToggle2 = false
     @EnvironmentObject var store: ItemStore
     @State var shoppingMenus = ""
-    @State var shoppingMoneys = ""
+    @State var shoppingMoneys: Int
     let item: Item!
    
+    
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -46,13 +49,17 @@ struct ShoppingView: View {
                 
                 
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        self.isOnToggle2.toggle()
+                    }, label: {
                         Image("chart")
                             .resizable()
                             .frame(width:50, height: 50)
                     })
                     .padding()
-                    
+                    .sheet(isPresented: $isOnToggle2) {
+                        ShoppingTypeListView(viewModel: ShoppingTypeListViewModel(item: item))
+                    }
                 
                 
                 
@@ -65,9 +72,11 @@ struct ShoppingView: View {
     }
 }
 
+
+
 struct ShoppingView_Previews: PreviewProvider {
     static var previews: some View {
-        ShoppingView(item: Item(id: 1, name: "", icon_file: "", record_type: "", odr: 1))
+        ShoppingView(shoppingMoneys: 0, item: Item(id: 1, name: "", icon_file: "", record_type: "", odr: 1))
     }
 }
 

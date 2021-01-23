@@ -11,23 +11,54 @@ import RealmSwift
 struct NumberTypeListView: View {
 
     @ObservedObject var viewModel: NumberTypeListViewModel
+    @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var numberStore: NumberStore
+    
+    let number = NumberDB()
+    let item = ItemDB()
+    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter
+        formatter.dateStyle = .short
+        formatter.dateFormat = "dd日"
+       
+        return  formatter
     }
-    let number = NumberDB()
+    
     var body: some View {
         NavigationView {
             List(viewModel.numbers) { item in
-                Text(String(item.value))
-                    .onAppear {
-                        self.viewModel.loadNext(item: item)
+               
+                    HStack {
+                        Text(dateFormatter.string(from: item.recorded_at))
+                            .font(.title3)
+                        Divider()
+                        Text(String(item.value))
+                            .onAppear {
+                                self.viewModel.loadNext(item: item)
+                        }
+        
                     }
-                
-            }.onAppear {
-                self.viewModel.onAppear()
-            }.navigationBarTitle("検索結果")
+                    .contextMenu(ContextMenu(menuItems: {
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Text("更新")
+                        })
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Text("削除")
+                        })
+                    }))
+                    
+                }.onAppear {
+                    self.viewModel.onAppear()
+                }.navigationBarTitle("\(item.name)一覧")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {presentation.wrappedValue.dismiss()}, label: {
+                            Text("戻る")
+                        })
+                    }
+                }
+            
         }
     }
 }

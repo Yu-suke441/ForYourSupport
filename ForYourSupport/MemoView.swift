@@ -10,6 +10,7 @@ import RealmSwift
 
 struct MemoView: View {
     @State var isOnToggle = false
+    @State var isOnToggle2 = false
     @EnvironmentObject var store: ItemStore
     let item: Item!
     let realm = try! Realm()
@@ -46,13 +47,17 @@ struct MemoView: View {
                 
                 
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        self.isOnToggle2.toggle()
+                    }, label: {
                         Image("chart")
                             .resizable()
                             .frame(width:50, height: 50)
                     })
                     .padding()
-                    
+                    .sheet(isPresented: $isOnToggle2) {
+                        CharacterTypeListView(viewModel: CharacterTypeViewModel(item: item))
+                    }
                 
                 
                 

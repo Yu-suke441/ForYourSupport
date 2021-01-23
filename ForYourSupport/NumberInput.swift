@@ -38,33 +38,7 @@ struct ModalView: View {
                 Section(header: Text(item.name)) {
                     TextField("数値を入力してください", text: $number.IntToStrDef(Double(number)),
                             onCommit: {
-                                self.message = "あなたの\(item.name)は\(self.number)です"
                                
-                                func newID(realm: Realm) -> Int {
-                                    if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
-                                        return number.id + 1
-                                    } else {
-                                            return 1
-                                    }
-                                }
-                                
-                                
-                                let realm = try! Realm()
-                                                    
-                                let num = NumberDB()
-                                let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
-
-                                num.id = newID(realm: realm)
-                                num.item_id = item!.id
-                                
-                                num.value = self.number
-                                num.recorded_at = Date()
-                                
-                                                
-                                try! realm.write{
-                                    itemDB?.numbers.append(num)
-        //                            realm.add(num, update: .modified)
-                                }
                                 
                                 
                               })
@@ -76,6 +50,8 @@ struct ModalView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        update()
+                        presentation.wrappedValue.dismiss()
                     }, label: {
                         Text("次へ")
                     })
@@ -88,7 +64,36 @@ struct ModalView: View {
             }
         }
     }
+    func update(){
+        func newID(realm: Realm) -> Int {
+            if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
+                return number.id + 1
+            } else {
+                    return 1
+            }
+        }
+        
+        
+        let realm = try! Realm()
+                            
+        let num = NumberDB()
+        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
+
+        num.id = newID(realm: realm)
+        num.item_id = item!.id
+        
+        num.value = self.number
+        num.recorded_at = Date()
+        
+                        
+        try! realm.write{
+            itemDB?.numbers.append(num)
+    //                            realm.add(num, update: .modified)
+        }
+    }
 }
+
+
 
 extension Binding where Value == Double {
     func IntToStrDef(_ def: Double) -> Binding<String> {

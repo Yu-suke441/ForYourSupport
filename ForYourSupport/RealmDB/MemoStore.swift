@@ -54,16 +54,16 @@ extension MemoStore {
             //realm.add(num, update: .modified)
         }
             
-        
-    }
-    
-    func newID(realm: Realm) -> Int {
-        if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
-            return number.id + 1
-        } else {
-                return 1
+        func newID(realm: Realm) -> Int {
+            if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
+                return number.id + 1
+            } else {
+                    return 1
+            }
         }
     }
+    
+    
 
         
     

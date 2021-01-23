@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class MemoDB: Object {
+class MemoDB: Object,Identifiable {
     @objc dynamic var id = 0
     
     @objc dynamic var item_id = 2

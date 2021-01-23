@@ -21,7 +21,7 @@ struct CategoryView: View {
         } else if item.record_type == "Memo" {
             MemoView(item: item)
         } else if item.record_type == "Shopping" {
-            ShoppingView(item: item)
+            ShoppingView(shoppingMoneys: 0, item: item)
         }
     }
 }
