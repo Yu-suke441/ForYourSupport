@@ -10,9 +10,9 @@ import SwiftUICharts
 
 struct GraphView: View {
     let number = NumberDB()
-    @State var item : ItemDB
+   
     var body: some View {
-        LineView(data: item.getNumberArray(), title: "Line chart", legend: "Full screen") // legend is optional, use optional .padding()
+        LineView(data: [], title: "Line chart", legend: "Full screen") // legend is optional, use optional .padding()
         
     }
 }

@@ -58,7 +58,20 @@ struct NumberTypeListView: View {
         }
     }
     func deleteRow(offsets: IndexSet) {
-        self.viewModel.numbers.remove(atOffsets: offsets)
+        guard let index = offsets.first else {
+            return
+        }
+        let deleteItem = viewModel.numbers[index]
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(deleteItem.self)
+            
+        }
+        
+        
+        
+    
+        
     }
     
 

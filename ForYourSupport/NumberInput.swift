@@ -36,12 +36,9 @@ struct ModalView: View {
         NavigationView {
             List {
                 Section(header: Text(item.name)) {
-                    TextField("数値を入力してください", text: $number.IntToStrDef(Double(number)),
-                            onCommit: {
-                               
-                                
-                                
-                              })
+                    TextField("数値を入力してください", text: $number.DoubleToStrDef(Double(number)))
+                        .keyboardType(.decimalPad)
+                        
                     }
             }
             .listStyle(GroupedListStyle())
@@ -99,7 +96,7 @@ struct ModalView: View {
 
 
 extension Binding where Value == Double {
-    func IntToStrDef(_ def: Double) -> Binding<String> {
+    func DoubleToStrDef(_ def: Double) -> Binding<String> {
         return Binding<String>(get: {
             return String(self.wrappedValue)
         }) { value in

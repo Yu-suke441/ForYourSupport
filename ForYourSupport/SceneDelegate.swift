@@ -12,15 +12,16 @@ import RealmSwift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+       
       if let windowScene = scene as? UIWindowScene {
         do {
           let realm = try Realm()
           let window = UIWindow(windowScene: windowScene)
           // Realmを最初に読み込むところ
-          let contentView = ContentView()
+            let contentView = ContentView()
             .environmentObject(ItemStore(realm: realm))
             .environmentObject(NumberStore(realm: realm))
           window.rootViewController = UIHostingController(rootView: contentView)

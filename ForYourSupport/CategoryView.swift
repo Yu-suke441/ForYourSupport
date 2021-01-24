@@ -18,10 +18,16 @@ struct CategoryView: View {
     var body: some View {
         if item.record_type == "Number" {
             NumberView(value: value, item: item)
+                .cornerRadius(7)
+                .shadow(radius:3)
         } else if item.record_type == "Memo" {
             MemoView(item: item)
+                .cornerRadius(7)
+                .shadow(radius:3)
         } else if item.record_type == "Shopping" {
             ShoppingView(shoppingMoneys: 0, item: item)
+                .cornerRadius(7)
+                .shadow(radius:3)
         }
     }
 }

@@ -15,6 +15,7 @@ struct NumberView: View {
     @State var value : Double
     @EnvironmentObject var store: ItemStore
     let item: Item!
+    
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -37,7 +38,7 @@ struct NumberView: View {
                 Button(action: {
                     self.isOnToggle.toggle()
                 }) {
-                    Text("\(item.name):\(value)").font(.title)
+                    Text("\(item.name):\(NSString(format: "%.1f", value))").font(.title)
                 }
                 .sheet(isPresented: $isOnToggle) {
                     ModalView(number: $value, item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))
@@ -55,7 +56,7 @@ struct NumberView: View {
                             .frame(width:50, height: 50)
                     })
                     .sheet(isPresented: $isOnToggle2) {
-                        GraphView(item: item!)
+                        GraphView()
                     }
                     Button(action: {
                         self.isOnToggle3.toggle()

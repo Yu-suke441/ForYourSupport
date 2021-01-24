@@ -23,6 +23,7 @@ final class NumberStore: ObservableObject {
     
     @EnvironmentObject var store: ItemStore
     var item: Item!
+    
 }
 
 
@@ -91,10 +92,10 @@ extension NumberStore {
         }
     }
     
-    func delete(numberDB:Int) {
+    func delete(numberID: Int) {
         objectWillChange.send()
         
-        guard let numberDB = numberResults.first(where: {$0.id == numberDB}) else {
+        guard let numberDB = numberResults.first(where: {$0.id == numberID}) else {
             return
         }
         
