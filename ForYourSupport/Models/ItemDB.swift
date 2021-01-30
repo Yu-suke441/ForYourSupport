@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class ItemDB: Object {
+class ItemDB: Object{
     @objc dynamic var id = 0
     
     @objc dynamic var name = ""
@@ -38,7 +38,6 @@ class ItemDB: Object {
         return "id"
     }
 }
-
 
 
 

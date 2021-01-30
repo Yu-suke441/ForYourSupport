@@ -76,7 +76,6 @@ struct CharacterInputView: View {
     @Binding var content: String
     
     var body: some View {
-        
         NavigationView {
             List {
                 Section(header: Text(item.name)) {

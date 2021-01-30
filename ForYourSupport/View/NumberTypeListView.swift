@@ -12,7 +12,7 @@ struct NumberTypeListView: View {
 
     @ObservedObject var viewModel: NumberTypeListViewModel
     @Environment(\.presentationMode) var presentation
-    @EnvironmentObject var numberStore: NumberStore
+    @ObservedObject var numberStore: NumberStore
     
     let number = NumberDB()
     let item = ItemDB()
@@ -41,8 +41,9 @@ struct NumberTypeListView: View {
                     }
                     
                     
-                }.onDelete(perform: self.deleteRow)
-                
+                }.onDelete (perform: { indexSet in
+                    deleteRow(offsets: indexSet)
+                })
                 }
                 .onAppear {
                     self.viewModel.onAppear()
@@ -57,20 +58,21 @@ struct NumberTypeListView: View {
             }
         }
     }
+    
+        
+    
     func deleteRow(offsets: IndexSet) {
         guard let index = offsets.first else {
             return
         }
         let deleteItem = viewModel.numbers[index]
+        
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(deleteItem.self)
-            
+            realm.delete(deleteItem)
         }
         
         
-        
-    
         
     }
     

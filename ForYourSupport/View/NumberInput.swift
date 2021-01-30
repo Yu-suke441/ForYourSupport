@@ -24,10 +24,10 @@ class MyData: ObservableObject {
 
 
 struct ModalView: View {
-    @Binding var number: Double
+    @Binding var number: String
     @State var message = ""
     @EnvironmentObject var store: ItemStore
-        let item: Item!
+    let item: Item!
     @EnvironmentObject var numberStore: NumberStore
     var inputNumber = 0
     @Environment(\.presentationMode) var presentation
@@ -36,7 +36,7 @@ struct ModalView: View {
         NavigationView {
             List {
                 Section(header: Text(item.name)) {
-                    TextField("数値を入力してください", text: $number.DoubleToStrDef(Double(number)))
+                    TextField("数値を入力してください", text: $number)
                         .keyboardType(.decimalPad)
                         
                     }
@@ -56,7 +56,7 @@ struct ModalView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         presentation.wrappedValue.dismiss()
-                        number = 0
+                        number = ""
                     }, label: {
                         Text("キャンセル")
                     })
@@ -82,7 +82,7 @@ struct ModalView: View {
         num.id = newID(realm: realm)
         num.item_id = item!.id
         
-        num.value = self.number
+        num.value = atof(number)
         num.recorded_at = Date()
         
                         

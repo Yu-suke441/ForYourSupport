@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB30F55525C155F700EC14F9 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F55425C155F700EC14F9 /* SettingView.swift */; };
+		CB30F55825C15A2900EC14F9 /* ItemIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F55725C15A2900EC14F9 /* ItemIconView.swift */; };
 		CB84910B25B01DE5006DA9C9 /* NumberTypeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84910A25B01DE5006DA9C9 /* NumberTypeListViewModel.swift */; };
 		CB90E14925AD2A8C004D36C7 /* NumberTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */; };
 		CBA0E58D259DD9E800760F40 /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E58C259DD9E800760F40 /* ItemRowView.swift */; };
@@ -57,6 +59,8 @@
 
 /* Begin PBXFileReference section */
 		C92C77B8FD3D2232A8EA509D /* Pods-ForYourSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.release.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.release.xcconfig"; sourceTree = "<group>"; };
+		CB30F55425C155F700EC14F9 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		CB30F55725C15A2900EC14F9 /* ItemIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIconView.swift; sourceTree = "<group>"; };
 		CB84910A25B01DE5006DA9C9 /* NumberTypeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTypeListViewModel.swift; sourceTree = "<group>"; };
 		CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTypeListView.swift; sourceTree = "<group>"; };
 		CBA0E58C259DD9E800760F40 /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB30F55125C14F3300EC14F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA5304259DC41700B2E008 /* ContentView.swift */,
+				CBA0E5B1259DDC9500760F40 /* NavigationBarView.swift */,
+				CBA0E58C259DD9E800760F40 /* ItemRowView.swift */,
+				CBA0E5B4259DDCF700760F40 /* ItemListView.swift */,
+				CBA0E595259DDA9200760F40 /* CategoryView.swift */,
+				CBA0E598259DDAA900760F40 /* NumberView.swift */,
+				CBA0E59B259DDAB300760F40 /* MemoView.swift */,
+				CBA0E59E259DDABF00760F40 /* ShoppingView.swift */,
+				CBA0E5A1259DDACF00760F40 /* GraphView.swift */,
+				CBA0E5A4259DDAE100760F40 /* NumberInput.swift */,
+				CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */,
+				CBA0E5A7259DDAF400760F40 /* CharacterInputView.swift */,
+				CBC30FB025BAFA6200FECEB1 /* CharacterTypeListView.swift */,
+				CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */,
+				CBC30FB625BAFD7B00FECEB1 /* ShoppingTypeListView.swift */,
+				CBEF91A325A9D9F10021AB6A /* MemoTypeListView.swift */,
+				CB30F55425C155F700EC14F9 /* SettingView.swift */,
+				CB30F55725C15A2900EC14F9 /* ItemIconView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CBCA52F4259DC41700B2E008 = {
 			isa = PBXGroup;
 			children = (
@@ -161,26 +190,8 @@
 			children = (
 				CBCA5300259DC41700B2E008 /* AppDelegate.swift */,
 				CBCA5302259DC41700B2E008 /* SceneDelegate.swift */,
-				CBCA5304259DC41700B2E008 /* ContentView.swift */,
-				CBA0E5B1259DDC9500760F40 /* NavigationBarView.swift */,
-				CBA0E58C259DD9E800760F40 /* ItemRowView.swift */,
-				CBA0E5B4259DDCF700760F40 /* ItemListView.swift */,
-				CBA0E595259DDA9200760F40 /* CategoryView.swift */,
-				CBA0E598259DDAA900760F40 /* NumberView.swift */,
-				CBA0E59B259DDAB300760F40 /* MemoView.swift */,
-				CBA0E59E259DDABF00760F40 /* ShoppingView.swift */,
-				CBA0E5A1259DDACF00760F40 /* GraphView.swift */,
-				CBA0E5A4259DDAE100760F40 /* NumberInput.swift */,
-				CB84910A25B01DE5006DA9C9 /* NumberTypeListViewModel.swift */,
-				CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */,
-				CBA0E5A7259DDAF400760F40 /* CharacterInputView.swift */,
-				CBC30FAC25BAEB7D00FECEB1 /* CharacterTypeViewModel.swift */,
-				CBC30FB025BAFA6200FECEB1 /* CharacterTypeListView.swift */,
-				CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */,
-				CBC30FB325BAFC1900FECEB1 /* ShoppingTypeListViewModel.swift */,
-				CBC30FB625BAFD7B00FECEB1 /* ShoppingTypeListView.swift */,
-				CBEF91A325A9D9F10021AB6A /* MemoTypeListView.swift */,
-				CBD60D15259DC9D3008BB5A9 /* RealmDB */,
+				CB30F55125C14F3300EC14F9 /* View */,
+				CBD60D15259DC9D3008BB5A9 /* ViewModel */,
 				CBD60CFC259DC7D2008BB5A9 /* Models */,
 				CBCA5306259DC41800B2E008 /* Assets.xcassets */,
 				CBCA530B259DC41800B2E008 /* LaunchScreen.storyboard */,
@@ -217,16 +228,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CBD60D15259DC9D3008BB5A9 /* RealmDB */ = {
+		CBD60D15259DC9D3008BB5A9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				CBA0E5BB259DE15100760F40 /* ItemStore.swift */,
 				CBEF919325A9C8950021AB6A /* NumberStore.swift */,
 				CBB0A5A625B5A27A001AF006 /* MemoStore.swift */,
 				CBF314C125BBA75400CA5F45 /* ShoppingStore.swift */,
+				CB84910A25B01DE5006DA9C9 /* NumberTypeListViewModel.swift */,
+				CBC30FAC25BAEB7D00FECEB1 /* CharacterTypeViewModel.swift */,
+				CBC30FB325BAFC1900FECEB1 /* ShoppingTypeListViewModel.swift */,
 				CBD60D16259DCA07008BB5A9 /* RealmPersistentInitializer.swift */,
 			);
-			path = RealmDB;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CBEA43DD25ABE67800FC8AF5 /* Seed */ = {
@@ -382,6 +396,7 @@
 				CBEF918E25A9C6F10021AB6A /* Memo.swift in Sources */,
 				CBD60D12259DC995008BB5A9 /* Item.swift in Sources */,
 				CBA0E5A2259DDACF00760F40 /* GraphView.swift in Sources */,
+				CB30F55525C155F700EC14F9 /* SettingView.swift in Sources */,
 				CBEF919425A9C8950021AB6A /* NumberStore.swift in Sources */,
 				CBF314C925BBA8EF00CA5F45 /* ShoppingDBkeys.swift in Sources */,
 				CBF314C225BBA75400CA5F45 /* ShoppingStore.swift in Sources */,
@@ -397,6 +412,7 @@
 				CBC30FB125BAFA6200FECEB1 /* CharacterTypeListView.swift in Sources */,
 				CBB0A5AA25B5A489001AF006 /* MemoDBKeys.swift in Sources */,
 				CBEF91A425A9D9F10021AB6A /* MemoTypeListView.swift in Sources */,
+				CB30F55825C15A2900EC14F9 /* ItemIconView.swift in Sources */,
 				CBCA5305259DC41700B2E008 /* ContentView.swift in Sources */,
 				CBA0E5BC259DE15100760F40 /* ItemStore.swift in Sources */,
 				CBA0E5B5259DDCF700760F40 /* ItemListView.swift in Sources */,

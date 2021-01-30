@@ -10,17 +10,18 @@ import RealmSwift
 
 final class ItemStore: ObservableObject {
     
-    private var itemResults: Results<ItemDB>!
+    private var itemResults: Results<ItemDB>
+    @Published var itemModel: [ItemDB] = []
     
     init(realm: Realm) {
         itemResults = realm.objects(ItemDB.self)
+            .sorted(byKeyPath: "odr")
     }
-    
-    
     
     var items: [Item] {
          itemResults.map(Item.init)
     }
+    
     
 }
 
@@ -45,32 +46,27 @@ extension ItemStore {
         }
     }
     
-    func update(item: Item) {
+    func update(id: Int, odr: Int) {
         objectWillChange.send()
-        
         do {
             let realm = try Realm()
             try realm.write {
                 realm.create(ItemDB.self,
-                             value: [
-                                ItemDBKeys.id.rawValue: item.id,
-                                ItemDBKeys.name.rawValue: item.name,
-                                ItemDBKeys.icon_file.rawValue: item.icon_file,
-                                ItemDBKeys.record_type.rawValue: item.record_type,
-                                ItemDBKeys.odr.rawValue: item.odr
-                            
-                             ],
+                             value: ["id": id,
+                                     "order": odr],
                              update: .modified)
             }
-        } catch let error {
+        }
+        
+        catch let error {
             print(error.localizedDescription)
         }
     }
     
-    func delete(itemID:Int) {
+    func delete(id: Int) {
         objectWillChange.send()
         
-        guard let itemDB = itemResults.first(where: {$0.id == itemID}) else {
+        guard let itemDB = itemResults.first(where: {$0.id == id}) else {
             return
         }
         

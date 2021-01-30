@@ -10,8 +10,11 @@ import FSCalendar
 
 struct NavigationBarView: View {
     @Environment(\.timeZone) var timeZone
-    
+    var item: Item
     @State private var selectDate = Date()
+    @State private var showsDatePicker = false
+    @State var isOnToggle = false
+    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -19,9 +22,6 @@ struct NavigationBarView: View {
         formatter.timeZone = timeZone
         return formatter
     }
-    
-    @State private var showsDatePicker = false
-    
     
     var body: some View {
         HStack {
@@ -39,8 +39,15 @@ struct NavigationBarView: View {
             })
             
             Spacer()
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            
+            Button(action: {
+                self.isOnToggle.toggle()
+            }, label: {
                 Text("設定")
+                    .font(.headline)
+                    .sheet(isPresented: $isOnToggle) {
+                        SettingView(item: item, items: [item])
+                    }
                 
             })
             .font(.body)
@@ -55,11 +62,11 @@ struct NavigationBarView: View {
     }
 }
 
-struct NavigationBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationBarView()
-    }
-}
+//struct NavigationBarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationBarView()
+//    }
+//}
 
 
 struct CalendarView: UIViewRepresentable {

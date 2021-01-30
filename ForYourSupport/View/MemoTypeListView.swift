@@ -10,7 +10,6 @@ import FSCalendar
 
 struct MemoTypeListView: View {
     @Environment(\.timeZone) var timeZone
-    
     @State private var selectDate = Date()
      
     var dateFormatter: DateFormatter {

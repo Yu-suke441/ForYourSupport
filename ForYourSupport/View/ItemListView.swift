@@ -13,10 +13,10 @@ struct ItemListView: View {
     
     @EnvironmentObject var store2: NumberStore
     let numbers: [Number]
-    
+    var columns: [GridItem] =
+             Array(repeating: .init(.flexible()), count: 1)
     var body: some View {
-        var columns: [GridItem] =
-                 Array(repeating: .init(.flexible()), count: 1)
+        
          ScrollView {
              LazyVGrid(columns: columns) {
                 ForEach(items) { item in

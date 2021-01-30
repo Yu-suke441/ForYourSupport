@@ -1,5 +1,5 @@
 //
-//  NumberView.swift
+//  ShoppingView.swift
 //  ForYourSupport
 //
 //  Created by Yusuke Murayama on 2020/12/31.
@@ -8,16 +8,15 @@
 import SwiftUI
 import RealmSwift
 
-struct NumberView: View {
+struct ShoppingView: View {
     @State var isOnToggle = false
     @State var isOnToggle2 = false
-    @State var isOnToggle3 = false
-    @State var value : Double
     @EnvironmentObject var store: ItemStore
+    @State var shoppingMenus = ""
+    @State var shoppingMoneys: Int
     let item: Item!
-    
+   
     var body: some View {
-        
         VStack(alignment: .leading) {
             
             HStack {
@@ -34,43 +33,34 @@ struct NumberView: View {
             
             HStack {
                 Spacer()
-                
                 Button(action: {
                     self.isOnToggle.toggle()
                 }) {
-                    Text("\(item.name):\(NSString(format: "%.1f", value))").font(.title)
+                    VStack {
+                        Text("買ったもの:\(shoppingMenus)").font(.title)
+                        Text("買った金額:\(shoppingMoneys)").font(.title)
+                    }
                 }
                 .sheet(isPresented: $isOnToggle) {
-                    ModalView(number: $value, item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr))
+                    ShoppingInputView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr), shoppingMenu: $shoppingMenus,shoppingMoney: $shoppingMoneys)
                 }
-                
-                
                 Spacer()
                 
-                VStack {
+                
+                    
                     Button(action: {
                         self.isOnToggle2.toggle()
-                    }, label: {
-                        Image("graph")
-                            .resizable()
-                            .frame(width:50, height: 50)
-                    })
-                    .sheet(isPresented: $isOnToggle2) {
-                        GraphView()
-                    }
-                    Button(action: {
-                        self.isOnToggle3.toggle()
                     }, label: {
                         Image("chart")
                             .resizable()
                             .frame(width:50, height: 50)
                     })
-                    .sheet(isPresented: $isOnToggle3) {
-                        NumberTypeListView(viewModel: NumberTypeListViewModel(item: item))
-                    
-                }.padding()
+                    .padding()
+                    .sheet(isPresented: $isOnToggle2) {
+                        ShoppingTypeListView(viewModel: ShoppingTypeListViewModel(item: item))
+                    }
                 
-                }
+                
                 
             }
             
@@ -81,4 +71,11 @@ struct NumberView: View {
     }
 }
 
+
+
+struct ShoppingView_Previews: PreviewProvider {
+    static var previews: some View {
+        ShoppingView(shoppingMoneys: 0, item: Item(id: 1, name: "", icon_file: "", record_type: "", odr: 1))
+    }
+}
 

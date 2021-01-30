@@ -15,13 +15,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-       
+        
       if let windowScene = scene as? UIWindowScene {
+        
         do {
           let realm = try Realm()
-          let window = UIWindow(windowScene: windowScene)
+            let itemDB = ItemDB()
+            let item = Item(itemDB: itemDB)
+                      let window = UIWindow(windowScene: windowScene)
           // Realmを最初に読み込むところ
-            let contentView = ContentView()
+            let contentView = ContentView(item: item)
             .environmentObject(ItemStore(realm: realm))
             .environmentObject(NumberStore(realm: realm))
           window.rootViewController = UIHostingController(rootView: contentView)

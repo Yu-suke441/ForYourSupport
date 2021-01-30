@@ -6,24 +6,29 @@
 //
 import SwiftUI
 import RealmSwift
+import Combine
 
 final class NumberStore: ObservableObject {
     
     private var numberResults: Results<NumberDB>
+    @Published var numberModel: [NumberDB] = []
     
     // numberResultsにDBのデータをセット
     init(realm: Realm) {
         numberResults = realm.objects(NumberDB.self)
     }
     
-    
-    var numbers: [Number] {
-        numberResults.map(Number.init)
+    var number: [Number] {
+         numberResults.map(Number.init)
     }
+    
+//    var numbers: [Number] {
+//        numberResults.map(Number.init)
+//    }
     
     @EnvironmentObject var store: ItemStore
     var item: Item!
-    
+    @Published var numbers: [NumberDB] = []
 }
 
 
@@ -67,7 +72,15 @@ extension NumberStore {
         }
     }
 
-        
+//    func fetchData() {
+//        guard let realm = try? Realm() else {return}
+//        
+//        let results = realm.objects(NumberDB.self)
+//        
+//        self.numberDBs = results.compactMap({(number) -> NumberDB? in
+//            return number
+//        })
+//    }
     
     
     func update(number: Number) {
@@ -92,10 +105,10 @@ extension NumberStore {
         }
     }
     
-    func delete(numberID: Int) {
+    func delete(id: Int) {
         objectWillChange.send()
         
-        guard let numberDB = numberResults.first(where: {$0.id == numberID}) else {
+        guard let numberDB = numberResults.first(where: {$0.id == id}) else {
             return
         }
         
@@ -123,6 +136,19 @@ extension NumberStore {
         } catch let error {
           print(error.localizedDescription)
         }
+    }
+    
+    func getNumberArray(item: NumberDB) -> [Double] {
+        var numberArray = [Double]()
+
+        let realm = try! Realm()
+        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item.id)
+        let results = itemDB?.numbers
+        numbers = results!.compactMap({ (numberArray) -> NumberDB? in
+            return numberArray
+            
+        })
+        return numberArray
     }
     
 }

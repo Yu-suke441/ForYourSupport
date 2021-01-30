@@ -12,7 +12,7 @@ class NumberDB: Object , Identifiable{
     
     @objc dynamic var id:Int = 0
     
-    @objc dynamic var item_id = 1
+    @objc dynamic var item_id:Int = 1
     
     @objc dynamic var value:Double = 0
     
