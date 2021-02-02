@@ -11,7 +11,6 @@ import Combine
 final class NumberStore: ObservableObject {
     
     private var numberResults: Results<NumberDB>
-    @Published var numberModel: [NumberDB] = []
     
     // numberResultsにDBのデータをセット
     init(realm: Realm) {
@@ -29,6 +28,7 @@ final class NumberStore: ObservableObject {
     @EnvironmentObject var store: ItemStore
     var item: Item!
     @Published var numbers: [NumberDB] = []
+    @State var value = ""
 }
 
 
@@ -37,7 +37,7 @@ extension NumberStore {
     
    
     // データ追加
-    func create(item_id: Int, value: Double, recorded_at: Date) {
+    func create(id: Int, item_id: Int, value: Double, recorded_at: Date) {
         objectWillChange.send()
         
                 
@@ -56,9 +56,8 @@ extension NumberStore {
                 itemDB.numbers.append(numberDB)
                 realm.add(numberDB)
             }
-            
-        } catch let err {
-            print(err.localizedDescription)
+        } catch let error {
+            print(error.localizedDescription)
         }
             
         
@@ -95,8 +94,6 @@ extension NumberStore {
                                 NumberDBKeys.item_id.rawValue: number.item_id,
                                 NumberDBKeys.value.rawValue: number.value,
                                 NumberDBKeys.recorded_at.rawValue: number.recorded_at,
-                                
-                            
                              ],
                              update: .modified)
             }
@@ -128,7 +125,7 @@ extension NumberStore {
         do {
           let realm = try Realm()
           try realm.write {
-            realm.create(ItemDB.self,
+            realm.create(NumberDB.self,
                          value: ["id": id
                          ],
                          update: .modified)
@@ -138,18 +135,7 @@ extension NumberStore {
         }
     }
     
-    func getNumberArray(item: NumberDB) -> [Double] {
-        var numberArray = [Double]()
-
-        let realm = try! Realm()
-        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item.id)
-        let results = itemDB?.numbers
-        numbers = results!.compactMap({ (numberArray) -> NumberDB? in
-            return numberArray
-            
-        })
-        return numberArray
-    }
+    
     
 }
 

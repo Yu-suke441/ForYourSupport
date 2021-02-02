@@ -6,14 +6,11 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct MemoView: View {
     @State var isOnToggle = false
     @State var isOnToggle2 = false
-    @EnvironmentObject var store: ItemStore
     let item: Item!
-    let realm = try! Realm()
     @State var contents = ""
     var body: some View {
         VStack(alignment: .leading) {
@@ -41,29 +38,23 @@ struct MemoView: View {
                         .lineLimit(1)
                 }
                 .sheet(isPresented: $isOnToggle) {
-                    CharacterInputView(memoStore: MemoStore(realm: realm), item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr), memo: Memo(memoDB: MemoDB()), content: $contents)
+                    CharacterInputView(item: Item(id: item.id, name: item.name, icon_file: item.icon_file, record_type: item.record_type, odr: item.odr), content: $contents)
                 }
                 
                 Spacer()
                 
-                
-                    
-                    Button(action: {
-                        self.isOnToggle2.toggle()
-                    }, label: {
-                        Image("chart")
-                            .resizable()
-                            .frame(width:50, height: 50)
-                    })
-                    .padding()
-                    .sheet(isPresented: $isOnToggle2) {
-                        CharacterTypeListView(viewModel: CharacterTypeViewModel(item: item))
-                    }
-                
-                
-                
+                Button(action: {
+                    self.isOnToggle2.toggle()
+                }, label: {
+                    Image("chart")
+                        .resizable()
+                        .frame(width:50, height: 50)
+                })
+                .padding()
+                .sheet(isPresented: $isOnToggle2) {
+                    CharacterTypeListView(viewModel: CharacterTypeViewModel(item: item))
+                }
             }
-            
         }
         .background(Color(.white))
         .frame(maxWidth: .infinity)

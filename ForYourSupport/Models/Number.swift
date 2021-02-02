@@ -13,7 +13,7 @@ struct Number: Identifiable {
     let item_id: Int
     let value :Double
     let recorded_at: Date
-
+    
 }
 
 extension Number {
@@ -22,5 +22,6 @@ extension Number {
         item_id = numberDB.item_id
         value = numberDB.value
         recorded_at = numberDB.recorded_at
+           
     }
 }

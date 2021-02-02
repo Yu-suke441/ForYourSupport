@@ -12,29 +12,15 @@ import RealmSwift
 
 
 
-class MyData: ObservableObject {
-    let objectWillChange = ObservableObjectPublisher()
-    var score = 0 {
-        willSet {
-            objectWillChange.send()
-        }
-    }
-}
-
-
 
 struct ModalView: View {
     @Binding var number: String
-    @State var message = ""
-    @EnvironmentObject var store: ItemStore
     let item: Item!
-    @EnvironmentObject var numberStore: NumberStore
-    var inputNumber = 0
     @Environment(\.presentationMode) var presentation
-    
+
     var body: some View {
         NavigationView {
-            List {
+            Form {
                 Section(header: Text(item.name)) {
                     TextField("数値を入力してください", text: $number)
                         .keyboardType(.decimalPad)
@@ -88,19 +74,19 @@ struct ModalView: View {
                         
         try! realm.write{
             itemDB?.numbers.append(num)
-    //                            realm.add(num, update: .modified)
+            //realm.add(num, update: .modified)
         }
     }
 }
 
 
 
-extension Binding where Value == Double {
-    func DoubleToStrDef(_ def: Double) -> Binding<String> {
-        return Binding<String>(get: {
-            return String(self.wrappedValue)
-        }) { value in
-            self.wrappedValue = Double(value) ?? Double(def)
-        }
-    }
-}
+//extension Binding where Value == Double {
+//    func DoubleToStrDef(_ def: Double) -> Binding<String> {
+//        return Binding<String>(get: {
+//            return String(self.wrappedValue)
+//        }) { value in
+//            self.wrappedValue = Double(value) ?? Double(def)
+//        }
+//    }
+//}

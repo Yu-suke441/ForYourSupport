@@ -7,19 +7,13 @@
 
 import SwiftUI
 import SwiftUICharts
-import RealmSwift
 
 struct GraphView: View {
     
-    let number = NumberDB()
-    let realm = try! Realm()
-    @State var itemDB = ItemDB()
-    @ObservedObject var itemStore: ItemStore
-    @ObservedObject var numberModel: NumberStore
     var item: Item!
-    @State var numberDB = NumberDB()
+    
     var body: some View {
-        LineView(data: itemDB.getNumberArray(), title: "\(item.name)")
+        LineView(data: item.numbers, title: "\(item.name)")
         // legend is optional, use optional .padding()
         
     }

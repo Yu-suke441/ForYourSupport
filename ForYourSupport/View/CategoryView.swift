@@ -6,13 +6,8 @@
 //
 
 import SwiftUI
-import RealmSwift
-
-
-
 
 struct CategoryView: View {
-    @ObservedObject var store: ItemStore
     let item: Item!
     @State var number: String
     

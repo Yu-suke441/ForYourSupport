@@ -29,6 +29,7 @@
 		CBC30FB125BAFA6200FECEB1 /* CharacterTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC30FB025BAFA6200FECEB1 /* CharacterTypeListView.swift */; };
 		CBC30FB425BAFC1900FECEB1 /* ShoppingTypeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC30FB325BAFC1900FECEB1 /* ShoppingTypeListViewModel.swift */; };
 		CBC30FB725BAFD7B00FECEB1 /* ShoppingTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC30FB625BAFD7B00FECEB1 /* ShoppingTypeListView.swift */; };
+		CBC4A8B625C81A75004C494D /* addNewTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC4A8B525C81A75004C494D /* addNewTableView.swift */; };
 		CBCA5301259DC41700B2E008 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA5300259DC41700B2E008 /* AppDelegate.swift */; };
 		CBCA5303259DC41700B2E008 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA5302259DC41700B2E008 /* SceneDelegate.swift */; };
 		CBCA5305259DC41700B2E008 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA5304259DC41700B2E008 /* ContentView.swift */; };
@@ -51,7 +52,6 @@
 		CBEF919125A9C7780021AB6A /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF919025A9C7780021AB6A /* Shopping.swift */; };
 		CBEF919425A9C8950021AB6A /* NumberStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF919325A9C8950021AB6A /* NumberStore.swift */; };
 		CBEF919825A9D0D50021AB6A /* NumberDBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF919725A9D0D50021AB6A /* NumberDBKeys.swift */; };
-		CBEF91A425A9D9F10021AB6A /* MemoTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF91A325A9D9F10021AB6A /* MemoTypeListView.swift */; };
 		CBF314C225BBA75400CA5F45 /* ShoppingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF314C125BBA75400CA5F45 /* ShoppingStore.swift */; };
 		CBF314C925BBA8EF00CA5F45 /* ShoppingDBkeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF314C825BBA8EF00CA5F45 /* ShoppingDBkeys.swift */; };
 		D565336E6F7E866FAC844F41 /* Pods_ForYourSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */; };
@@ -81,6 +81,7 @@
 		CBC30FB025BAFA6200FECEB1 /* CharacterTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypeListView.swift; sourceTree = "<group>"; };
 		CBC30FB325BAFC1900FECEB1 /* ShoppingTypeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTypeListViewModel.swift; sourceTree = "<group>"; };
 		CBC30FB625BAFD7B00FECEB1 /* ShoppingTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTypeListView.swift; sourceTree = "<group>"; };
+		CBC4A8B525C81A75004C494D /* addNewTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNewTableView.swift; sourceTree = "<group>"; };
 		CBCA52FD259DC41700B2E008 /* ForYourSupport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForYourSupport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCA5300259DC41700B2E008 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBCA5302259DC41700B2E008 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		CBEF919025A9C7780021AB6A /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 		CBEF919325A9C8950021AB6A /* NumberStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberStore.swift; sourceTree = "<group>"; };
 		CBEF919725A9D0D50021AB6A /* NumberDBKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberDBKeys.swift; sourceTree = "<group>"; };
-		CBEF91A325A9D9F10021AB6A /* MemoTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTypeListView.swift; sourceTree = "<group>"; };
 		CBF314C125BBA75400CA5F45 /* ShoppingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingStore.swift; sourceTree = "<group>"; };
 		CBF314C825BBA8EF00CA5F45 /* ShoppingDBkeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDBkeys.swift; sourceTree = "<group>"; };
 		DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForYourSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,8 +159,8 @@
 				CBC30FB025BAFA6200FECEB1 /* CharacterTypeListView.swift */,
 				CBA0E5AB259DDB1200760F40 /* ShoppingInputView.swift */,
 				CBC30FB625BAFD7B00FECEB1 /* ShoppingTypeListView.swift */,
-				CBEF91A325A9D9F10021AB6A /* MemoTypeListView.swift */,
 				CB30F55425C155F700EC14F9 /* SettingView.swift */,
+				CBC4A8B525C81A75004C494D /* addNewTableView.swift */,
 				CB30F55725C15A2900EC14F9 /* ItemIconView.swift */,
 			);
 			path = View;
@@ -398,6 +398,7 @@
 				CBA0E5A2259DDACF00760F40 /* GraphView.swift in Sources */,
 				CB30F55525C155F700EC14F9 /* SettingView.swift in Sources */,
 				CBEF919425A9C8950021AB6A /* NumberStore.swift in Sources */,
+				CBC4A8B625C81A75004C494D /* addNewTableView.swift in Sources */,
 				CBF314C925BBA8EF00CA5F45 /* ShoppingDBkeys.swift in Sources */,
 				CBF314C225BBA75400CA5F45 /* ShoppingStore.swift in Sources */,
 				CBA0E5AC259DDB1200760F40 /* ShoppingInputView.swift in Sources */,
@@ -411,7 +412,6 @@
 				CBEF919825A9D0D50021AB6A /* NumberDBKeys.swift in Sources */,
 				CBC30FB125BAFA6200FECEB1 /* CharacterTypeListView.swift in Sources */,
 				CBB0A5AA25B5A489001AF006 /* MemoDBKeys.swift in Sources */,
-				CBEF91A425A9D9F10021AB6A /* MemoTypeListView.swift in Sources */,
 				CB30F55825C15A2900EC14F9 /* ItemIconView.swift in Sources */,
 				CBCA5305259DC41700B2E008 /* ContentView.swift in Sources */,
 				CBA0E5BC259DE15100760F40 /* ItemStore.swift in Sources */,

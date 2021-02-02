@@ -12,7 +12,6 @@ struct ShoppingTypeListView: View {
     @Environment(\.presentationMode) var presentation
     @State private var selectDate = Date()
     let item = ItemDB()
-    let shoppingDB = ShoppingDB()
     
     let dt = Date()
     var dateFormatter: DateFormatter {
@@ -26,7 +25,7 @@ struct ShoppingTypeListView: View {
     
     var body: some View {
         NavigationView {
-            List {
+            Form {
                 ForEach(viewModel.shoppings) { item in
                     HStack {
                         Text(dateFormatter.string(from: item.recorded_date))

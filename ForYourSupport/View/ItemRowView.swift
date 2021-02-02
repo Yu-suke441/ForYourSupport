@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ItemRowView: View {
-    @EnvironmentObject var store: ItemStore
-    
+   
     let item: Item
     
     var body: some View {
-        CategoryView(store: store, item: item, number: "")
+        CategoryView(item: item, number: "")
         
     }
 }

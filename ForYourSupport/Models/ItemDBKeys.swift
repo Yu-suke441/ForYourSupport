@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 列挙隊を定義
 enum ItemDBKeys: String {
     case id = "id"
     case name = "name"

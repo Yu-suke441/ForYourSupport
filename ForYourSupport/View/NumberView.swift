@@ -6,18 +6,13 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct NumberView: View {
     @State var isOnToggle = false
     @State var isOnToggle2 = false
     @State var isOnToggle3 = false
     @State var number : String
-    @EnvironmentObject var store: ItemStore
     @State var item: Item!
-    @EnvironmentObject var numberStore: NumberStore
-    @State var itemDB = ItemDB()
-   
     
     var body: some View {
         
@@ -58,7 +53,7 @@ struct NumberView: View {
                             .frame(width:50, height: 50)
                     })
                     .sheet(isPresented: $isOnToggle2) {
-                        GraphView(itemStore: store, numberModel: numberStore, item: item)
+                        GraphView(item: item)
                     }
                     Button(action: {
                         self.isOnToggle3.toggle()
@@ -68,7 +63,7 @@ struct NumberView: View {
                             .frame(width:50, height: 50)
                     })
                     .sheet(isPresented: $isOnToggle3) {
-                        NumberTypeListView(viewModel: NumberTypeListViewModel(item: item), numberStore: numberStore)
+                        NumberTypeListView(viewModel: NumberTypeListViewModel(item: item))
                     
                 }.padding()
                 

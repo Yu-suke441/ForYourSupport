@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+// Realm用のclass
 class ItemDB: Object{
     @objc dynamic var id = 0
     
@@ -25,15 +26,7 @@ class ItemDB: Object{
     
     let shoppings = List<ShoppingDB>()
 
-    func getNumberArray() -> [Double] {
-        var numberArray = [Double]()
-
-        for number in numbers {
-            numberArray.append(number.value)
-        }
-        return numberArray
-    }
-    
+    // 主キーを使うとデータの更新や削除で使える
     override static func primaryKey() -> String? {
         return "id"
     }

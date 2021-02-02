@@ -11,16 +11,17 @@ import RealmSwift
 final class ItemStore: ObservableObject {
     
     private var itemResults: Results<ItemDB>
-    @Published var itemModel: [ItemDB] = []
     
+    // itemResultsにDBのデータをセット
     init(realm: Realm) {
         itemResults = realm.objects(ItemDB.self)
-            .sorted(byKeyPath: "odr")
+
     }
     
     var items: [Item] {
          itemResults.map(Item.init)
     }
+    
     
     
 }
@@ -63,10 +64,10 @@ extension ItemStore {
         }
     }
     
-    func delete(id: Int) {
+    func delete(itemID: Int) {
         objectWillChange.send()
         
-        guard let itemDB = itemResults.first(where: {$0.id == id}) else {
+        guard let itemDB = itemResults.first(where: {$0.id == itemID}) else {
             return
         }
         
@@ -77,22 +78,6 @@ extension ItemStore {
             }
         } catch let error {
             print(error.localizedDescription)
-        }
-    }
-    
-    func update(id: String, order: Int) {
-        objectWillChange.send()
-
-        do {
-          let realm = try Realm()
-          try realm.write {
-            realm.create(ItemDB.self,
-                         value: ["id": id,
-                                 "order": order],
-                         update: .modified)
-          }
-        } catch let error {
-          print(error.localizedDescription)
         }
     }
     

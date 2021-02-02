@@ -18,7 +18,7 @@ struct ShoppingInputView: View {
     var body: some View {
         
         NavigationView {
-            List {
+            Form {
                 Section(header: Text("買ったもの")) {
                     TextField("買ったものを入力してください", text: $shoppingMenu)
                 }

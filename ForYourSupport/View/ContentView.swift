@@ -10,15 +10,14 @@ import RealmSwift
 
 struct ContentView: View {
     @EnvironmentObject var store: ItemStore
-    @EnvironmentObject var store2: NumberStore
     var item : Item
-    
+    @State var tableName: String
     var body: some View {
         VStack(spacing: 0) {
             Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)).edgesIgnoringSafeArea(.top).frame(height:0)
-                
-            NavigationBarView(item: item)
-            ItemListView(items: store.items, numbers: [])
+            
+            NavigationBarView(item: item, tableName: tableName)
+            ItemListView(items: store.items)
                 .padding()
         }
         .background(Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)))
@@ -35,7 +34,7 @@ struct ContentView: View {
         }
         
         
-         
+        
     }
     
     

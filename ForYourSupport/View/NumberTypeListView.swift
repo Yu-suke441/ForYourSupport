@@ -9,25 +9,22 @@ import SwiftUI
 import RealmSwift
 
 struct NumberTypeListView: View {
-
+    
     @ObservedObject var viewModel: NumberTypeListViewModel
     @Environment(\.presentationMode) var presentation
-    @ObservedObject var numberStore: NumberStore
-    
-    let number = NumberDB()
     let item = ItemDB()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.dateFormat = "MM月dd日"
-       
+        
         return  formatter
     }
     
     var body: some View {
         NavigationView {
-            List{
+            Form{
                 ForEach(viewModel.numbers, id: \.self) { item in
                     HStack {
                         Text(dateFormatter.string(from: item.recorded_at))
@@ -36,17 +33,14 @@ struct NumberTypeListView: View {
                         Text(String(item.value))
                             .onAppear {
                                 self.viewModel.loadNext(item: item)
-                        }
-        
+                            }
                     }
-                    
-                    
                 }.onDelete (perform: { indexSet in
                     deleteRow(offsets: indexSet)
                 })
-                }
-                .onAppear {
-                    self.viewModel.onAppear()
+            }
+            .onAppear {
+                self.viewModel.onAppear()
             }
             .navigationBarTitle("\(item.name)一覧")
             .toolbar {
@@ -59,7 +53,7 @@ struct NumberTypeListView: View {
         }
     }
     
-        
+    
     
     func deleteRow(offsets: IndexSet) {
         guard let index = offsets.first else {
@@ -76,8 +70,8 @@ struct NumberTypeListView: View {
         
     }
     
-
-     
+    
+    
     
 }
 

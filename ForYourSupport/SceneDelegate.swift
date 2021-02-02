@@ -21,10 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         do {
           let realm = try Realm()
             let itemDB = ItemDB()
+            let tableName = ""
             let item = Item(itemDB: itemDB)
-                      let window = UIWindow(windowScene: windowScene)
+            
+            let window = UIWindow(windowScene: windowScene)
           // Realmを最初に読み込むところ
-            let contentView = ContentView(item: item)
+            let contentView = ContentView(item: item, tableName: tableName)
             .environmentObject(ItemStore(realm: realm))
             .environmentObject(NumberStore(realm: realm))
           window.rootViewController = UIHostingController(rootView: contentView)

@@ -12,16 +12,17 @@ struct CharacterTypeListView: View {
     @Environment(\.presentationMode) var presentation
     let memo = MemoDB()
     let item = ItemDB()
+    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.dateFormat = "MM月dd日"
-       
         return  formatter
     }
+    
     var body: some View {
         NavigationView {
-            List{
+            Form{
                 ForEach(viewModel.memos) { item in
                     HStack {
                         Text(dateFormatter.string(from: item.recorded_date))

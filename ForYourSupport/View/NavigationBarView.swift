@@ -10,10 +10,12 @@ import FSCalendar
 
 struct NavigationBarView: View {
     @Environment(\.timeZone) var timeZone
-    var item: Item
     @State private var selectDate = Date()
     @State private var showsDatePicker = false
     @State var isOnToggle = false
+    @State var showAddTablePicker = false
+    var item: Item!
+    @State var tableName: String
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -26,7 +28,7 @@ struct NavigationBarView: View {
     var body: some View {
         HStack {
             Button(action: {
-                    
+                
             }, label: {
                 Text("\(selectDate, formatter: dateFormatter)")
                     .onTapGesture {
@@ -39,14 +41,23 @@ struct NavigationBarView: View {
             })
             
             Spacer()
-            
+            Button(action: {
+                self.showAddTablePicker.toggle()
+            }, label: {
+                Text("追加")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .sheet(isPresented: $showAddTablePicker) {
+                        addNewTableView(tableName: $tableName)
+                    }
+            })
             Button(action: {
                 self.isOnToggle.toggle()
             }, label: {
                 Text("設定")
                     .font(.headline)
                     .sheet(isPresented: $isOnToggle) {
-                        SettingView(item: item, items: [item])
+                        SettingView()
                     }
                 
             })
@@ -56,9 +67,9 @@ struct NavigationBarView: View {
         .frame(height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         .background(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
         .foregroundColor(.white)
-    
         
-            
+        
+        
     }
 }
 
@@ -70,14 +81,14 @@ struct NavigationBarView: View {
 
 
 struct CalendarView: UIViewRepresentable {
-
+    
     var myCalendar: FSCalendar!
     
     func makeUIView(context: Context) -> UIView {
         return FSCalendar(frame: CGRect(x: 0.0, y: 40.0, width: .infinity, height: 300.0))
         
     }
-
+    
     func updateUIView(_ uiView: UIView, context: Context) {
     }
 }

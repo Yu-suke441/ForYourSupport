@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct ItemListView: View {
-    @EnvironmentObject var store: ItemStore
     let items: [Item]
-    
-    @EnvironmentObject var store2: NumberStore
-    let numbers: [Number]
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 1)
     var body: some View {
@@ -22,6 +18,7 @@ struct ItemListView: View {
                 ForEach(items) { item in
                     HStack {
                         ItemRowView(item: item)
+                            
                     }
                     
                 }
