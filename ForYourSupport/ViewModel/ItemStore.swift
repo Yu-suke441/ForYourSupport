@@ -31,10 +31,18 @@ extension ItemStore {
     func create(name: String, icon_file: String, record_type: String, odr: Int) {
         objectWillChange.send()
         
+        func newID(realm: Realm) -> Int {
+            if let item = realm.objects(ItemDB.self).sorted(byKeyPath: "id").last {
+                return item.id + 1
+            } else {
+                    return 1
+            }
+        }
+        
         do {
             let realm = try! Realm()
             let itemDB = ItemDB()
-            itemDB.id = UUID().hashValue
+            itemDB.id = newID(realm: realm)
             itemDB.name = name
             itemDB.icon_file = icon_file
             itemDB.record_type = record_type
@@ -79,6 +87,29 @@ extension ItemStore {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func move(sourceIndexSet: IndexSet, destination: Int) {
+        guard  let source = sourceIndexSet.first else {
+            return
+        }
+        
+        let moveId = items[source].id
+        
+        if source < destination {
+            for i in (source + 1)...(destination - 1) {
+                update(id: items[i].id, odr: items[i].odr - 1)
+            }
+            update(id: moveId, odr: destination - 1)
+        } else if destination < source {
+            for i in (destination ... (source - 1)).reversed() {
+                update(id: items[i].id, odr: items[i].odr + 1)
+            }
+            update(id: moveId, odr: destination)
+        } else {
+            return
+        }
+        
     }
     
 }

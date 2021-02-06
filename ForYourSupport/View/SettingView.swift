@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct SettingView: View {
     var body: some View {
-        Text("Hello Swift")
+        NavigationView {
+            List {
+                Section(header: Text("アプリ初期化").foregroundColor(.black)) {
+                    Button(action: {
+                    }, label: {
+                        Text("アプリを初期化する")
+                            .foregroundColor(.black)
+                    })
+                }
+            }
+        }
     }
 }
 

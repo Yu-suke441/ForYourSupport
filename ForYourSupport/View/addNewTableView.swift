@@ -7,51 +7,42 @@
 
 import SwiftUI
 
-enum Item_icon: String, CaseIterable {
-    case chart
-    case graph
-    case detail
-    case check_mark
-    case heart_rate
-    case meal
-    case memo
-    case shopping
-    case task
-    case thermometer
-    case through
-    case time_of_sleep
-    case weight_scale
-    
-}
-
-
 struct addNewTableView: View {
-    var selections = ["数値入力", "テキスト入力"]
+    var selections = ["Number", "Memo"]
     @State private var selection = 0
+    @State private var iconIndex = 0
+    var icons = ["chart","graph","detail","check-mark","heart_rate","meal","memo","shopping","task","thermometer","through","time_of_sleep","weight-scale"]
     @Binding var tableName: String
     @Environment(\.presentationMode) var presentation
-    
+    @EnvironmentObject var itemStore: ItemStore
     var body: some View {
         NavigationView {
             Form {
-                TextField("テーブル名", text:$tableName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Picker(selection: $selection, label: Text("アイコンの追加")) {
-                    ForEach(Item_icon.allCases, id: \.self) { (item_icon) in
-                        Image(item_icon.rawValue)
-                            .resizable()
-                            .frame(width: 45, height: 45)
-                            .padding()
+                Section(header: Text("テーブル名").foregroundColor(.black)) {
+                    TextField("テーブル名", text:$tableName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .foregroundColor(.black)
+                }
+                Section(header: Text("アイコン追加").foregroundColor(.black)) {
+                    Picker(selection: $iconIndex, label: Text("アイコンの追加").foregroundColor(.black)) {
+                        ForEach(0 ..< icons.count) { (item_icon) in
+                            Image(self.icons[item_icon])
+                                .resizable()
+                                .frame(width: 45, height: 45)
+                                .padding()
+                                .tag(item_icon)
+                        }
                     }
                 }
-                
-                Picker(selection: $selection, label: Text("\(selection)")) {
-                    ForEach(0..<selections.count) {
-                        Text(self.selections[$0])
+                Section(header: Text("入力タイプ").foregroundColor(.black)) {
+                    Picker(selection: $selection, label: Text("\(selection)")) {
+                        ForEach(0..<selections.count) {
+                            Text(self.selections[$0])
+                        }
                     }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding()
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
             }
             .listStyle(GroupedListStyle())
             .navigationTitle("テーブルの追加")
@@ -68,6 +59,7 @@ struct addNewTableView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                             presentation.wrappedValue.dismiss()
+                        itemStore.create(name: tableName, icon_file: self.icons[iconIndex], record_type: selections[selection], odr: 5)
 
                     }, label: {
                         Text("テーブル追加")

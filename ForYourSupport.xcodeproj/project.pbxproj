@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB30F55525C155F700EC14F9 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F55425C155F700EC14F9 /* SettingView.swift */; };
-		CB30F55825C15A2900EC14F9 /* ItemIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F55725C15A2900EC14F9 /* ItemIconView.swift */; };
 		CB84910B25B01DE5006DA9C9 /* NumberTypeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84910A25B01DE5006DA9C9 /* NumberTypeListViewModel.swift */; };
 		CB90E14925AD2A8C004D36C7 /* NumberTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */; };
 		CBA0E58D259DD9E800760F40 /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E58C259DD9E800760F40 /* ItemRowView.swift */; };
@@ -60,7 +59,6 @@
 /* Begin PBXFileReference section */
 		C92C77B8FD3D2232A8EA509D /* Pods-ForYourSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.release.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.release.xcconfig"; sourceTree = "<group>"; };
 		CB30F55425C155F700EC14F9 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		CB30F55725C15A2900EC14F9 /* ItemIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIconView.swift; sourceTree = "<group>"; };
 		CB84910A25B01DE5006DA9C9 /* NumberTypeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTypeListViewModel.swift; sourceTree = "<group>"; };
 		CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTypeListView.swift; sourceTree = "<group>"; };
 		CBA0E58C259DD9E800760F40 /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 				CBC30FB625BAFD7B00FECEB1 /* ShoppingTypeListView.swift */,
 				CB30F55425C155F700EC14F9 /* SettingView.swift */,
 				CBC4A8B525C81A75004C494D /* addNewTableView.swift */,
-				CB30F55725C15A2900EC14F9 /* ItemIconView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -412,7 +409,6 @@
 				CBEF919825A9D0D50021AB6A /* NumberDBKeys.swift in Sources */,
 				CBC30FB125BAFA6200FECEB1 /* CharacterTypeListView.swift in Sources */,
 				CBB0A5AA25B5A489001AF006 /* MemoDBKeys.swift in Sources */,
-				CB30F55825C15A2900EC14F9 /* ItemIconView.swift in Sources */,
 				CBCA5305259DC41700B2E008 /* ContentView.swift in Sources */,
 				CBA0E5BC259DE15100760F40 /* ItemStore.swift in Sources */,
 				CBA0E5B5259DDCF700760F40 /* ItemListView.swift in Sources */,

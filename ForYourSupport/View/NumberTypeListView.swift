@@ -12,6 +12,7 @@ struct NumberTypeListView: View {
     
     @ObservedObject var viewModel: NumberTypeListViewModel
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var numberStore: NumberStore
     let item = ItemDB()
     
     var dateFormatter: DateFormatter {
@@ -35,9 +36,11 @@ struct NumberTypeListView: View {
                                 self.viewModel.loadNext(item: item)
                             }
                     }
-                }.onDelete (perform: { indexSet in
+                }.onDelete(perform: { indexSet in
                     deleteRow(offsets: indexSet)
+                    
                 })
+                
             }
             .onAppear {
                 self.viewModel.onAppear()
@@ -61,10 +64,8 @@ struct NumberTypeListView: View {
         }
         let deleteItem = viewModel.numbers[index]
         
-        let realm = try! Realm()
-        try! realm.write {
-            realm.delete(deleteItem)
-        }
+        numberStore.delete(id: deleteItem.id)
+        
         
         
         
