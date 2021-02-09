@@ -32,9 +32,9 @@ struct NumberTypeListView: View {
                             .font(.title3)
                         Divider()
                         Text(String(item.value))
-                            .onAppear {
-                                self.viewModel.loadNext(item: item)
-                            }
+//                            .onAppear {
+//                                self.viewModel.loadNext(item: item)
+//                            }
                     }
                 }.onDelete(perform: { indexSet in
                     deleteRow(offsets: indexSet)
@@ -63,7 +63,7 @@ struct NumberTypeListView: View {
             return
         }
         let deleteItem = viewModel.numbers[index]
-        
+        viewModel.numbers.remove(at: index)
         numberStore.delete(id: deleteItem.id)
         
         

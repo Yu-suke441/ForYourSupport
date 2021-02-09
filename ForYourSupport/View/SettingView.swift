@@ -9,11 +9,24 @@ import SwiftUI
 import RealmSwift
 
 struct SettingView: View {
+    
     var body: some View {
         NavigationView {
             List {
                 Section(header: Text("アプリ初期化").foregroundColor(.black)) {
                     Button(action: {
+                        
+                        if let fileURL = Realm.Configuration.defaultConfiguration.fileURL {
+                            do {
+                                
+                                try! FileManager.default.removeItem(at: fileURL)
+                            } catch let error as NSError {
+                                print(error)
+                            }
+                        }
+                        
+                        
+                        
                     }, label: {
                         Text("アプリを初期化する")
                             .foregroundColor(.black)

@@ -82,11 +82,15 @@ final class NumberTypeListViewModel: ObservableObject {
             switch result {
             case .success(let items):
                 self.currentPage += 1
-                self.numbers.append(contentsOf: items)
+//                self.numbers.append(contentsOf: items)
+                print(self.numbers.count)
+                self.numbers = items
             case .failure(let error):
                 self.currentPage = 1
                 print(error)
             }
         }
     }
+    
+    
 }

@@ -113,7 +113,6 @@ extension NumberStore {
             let realm = try Realm()
             try realm.write {
                 realm.delete(numberDB)
-                fetchData()
             }
         } catch let error {
             print(error.localizedDescription)
@@ -137,14 +136,7 @@ extension NumberStore {
         }
     }
     
-    func fetchData() {
-        guard let dbRef = try? Realm() else {return}
-        
-        let results = dbRef.objects(NumberDB.self)
-        self.numbers = results.compactMap({(number) -> NumberDB? in
-            return number
-        })
-    }
+    
     
     
 }

@@ -26,17 +26,11 @@ struct ItemListView: View {
                                     Text("テーブルの削除")
                                 })
                             }))
-                        
                     }
-                }.onMove { source, destination in
-                    store.move(sourceIndexSet: source, destination: destination)
                 }
              }
              .padding()
              .font(.largeTitle)
          }
-    }
-    func move(from source: IndexSet, to destination: Int) {
-        self.items.move(fromOffsets: source, toOffset: destination)
     }
 }
