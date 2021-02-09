@@ -9,17 +9,20 @@ import SwiftUI
 import RealmSwift
 
 struct SettingView: View {
-    
+    @EnvironmentObject var store: NumberStore
     var body: some View {
         NavigationView {
             List {
                 Section(header: Text("アプリ初期化").foregroundColor(.black)) {
                     Button(action: {
                         
-                        if let fileURL = Realm.Configuration.defaultConfiguration.fileURL {
+                        if let defaultRealmPath = Realm.Configuration.defaultConfiguration.fileURL {
                             do {
+                                store.objectWillChange.send()
+                                try FileManager.default.removeItem(at: defaultRealmPath)
+                                let bundleRealmPath = Bundle.main.url(forResource: "ItemList", withExtension: "realm")
+                                try FileManager.default.copyItem(at: bundleRealmPath!, to: defaultRealmPath)
                                 
-                                try! FileManager.default.removeItem(at: fileURL)
                             } catch let error as NSError {
                                 print(error)
                             }
