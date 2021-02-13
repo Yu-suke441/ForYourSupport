@@ -16,16 +16,15 @@
 		CB31E10325D327B200A07A74 /* ShoppingTypeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F425D327B200A07A74 /* ShoppingTypeListViewModel.swift */; };
 		CB31E10425D327B200A07A74 /* NumberViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F525D327B200A07A74 /* NumberViewCellModel.swift */; };
 		CB31E10525D327B200A07A74 /* NumberTypeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F625D327B200A07A74 /* NumberTypeListViewModel.swift */; };
-		CB31E10625D327B200A07A74 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F725D327B200A07A74 /* ContentViewModel.swift */; };
+		CB31E10625D327B200A07A74 /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F725D327B200A07A74 /* ItemListViewModel.swift */; };
 		CB31E10725D327B200A07A74 /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F825D327B200A07A74 /* NumberViewModel.swift */; };
-		CB31E10825D327B200A07A74 /* ContentViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F925D327B200A07A74 /* ContentViewCellModel.swift */; };
+		CB31E10825D327B200A07A74 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F925D327B200A07A74 /* ItemCellViewModel.swift */; };
 		CB31E12825D3282D00A07A74 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E11925D3282D00A07A74 /* MemoModel.swift */; };
 		CB31E12925D3282D00A07A74 /* ShoppingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E11A25D3282D00A07A74 /* ShoppingModel.swift */; };
 		CB31E12A25D3282D00A07A74 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E11B25D3282D00A07A74 /* ItemModel.swift */; };
 		CB31E12B25D3282D00A07A74 /* NumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E11C25D3282D00A07A74 /* NumberModel.swift */; };
 		CB90E14925AD2A8C004D36C7 /* NumberTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */; };
-		CBA0E58D259DD9E800760F40 /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E58C259DD9E800760F40 /* ItemRowView.swift */; };
-		CBA0E596259DDA9200760F40 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E595259DDA9200760F40 /* CategoryView.swift */; };
+		CBA0E58D259DD9E800760F40 /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E58C259DD9E800760F40 /* ItemCellView.swift */; };
 		CBA0E599259DDAA900760F40 /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E598259DDAA900760F40 /* NumberView.swift */; };
 		CBA0E59C259DDAB300760F40 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E59B259DDAB300760F40 /* MemoView.swift */; };
 		CBA0E59F259DDABF00760F40 /* ShoppingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E59E259DDABF00760F40 /* ShoppingView.swift */; };
@@ -61,16 +60,15 @@
 		CB31E0F425D327B200A07A74 /* ShoppingTypeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingTypeListViewModel.swift; sourceTree = "<group>"; };
 		CB31E0F525D327B200A07A74 /* NumberViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberViewCellModel.swift; sourceTree = "<group>"; };
 		CB31E0F625D327B200A07A74 /* NumberTypeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTypeListViewModel.swift; sourceTree = "<group>"; };
-		CB31E0F725D327B200A07A74 /* ContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		CB31E0F725D327B200A07A74 /* ItemListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListViewModel.swift; sourceTree = "<group>"; };
 		CB31E0F825D327B200A07A74 /* NumberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
-		CB31E0F925D327B200A07A74 /* ContentViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewCellModel.swift; sourceTree = "<group>"; };
+		CB31E0F925D327B200A07A74 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		CB31E11925D3282D00A07A74 /* MemoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
 		CB31E11A25D3282D00A07A74 /* ShoppingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingModel.swift; sourceTree = "<group>"; };
 		CB31E11B25D3282D00A07A74 /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		CB31E11C25D3282D00A07A74 /* NumberModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberModel.swift; sourceTree = "<group>"; };
 		CB90E14825AD2A8C004D36C7 /* NumberTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTypeListView.swift; sourceTree = "<group>"; };
-		CBA0E58C259DD9E800760F40 /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
-		CBA0E595259DDA9200760F40 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		CBA0E58C259DD9E800760F40 /* ItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellView.swift; sourceTree = "<group>"; };
 		CBA0E598259DDAA900760F40 /* NumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
 		CBA0E59B259DDAB300760F40 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		CBA0E59E259DDABF00760F40 /* ShoppingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingView.swift; sourceTree = "<group>"; };
@@ -133,9 +131,8 @@
 			children = (
 				CBCA5304259DC41700B2E008 /* ContentView.swift */,
 				CBA0E5B1259DDC9500760F40 /* NavigationBarView.swift */,
-				CBA0E58C259DD9E800760F40 /* ItemRowView.swift */,
+				CBA0E58C259DD9E800760F40 /* ItemCellView.swift */,
 				CBA0E5B4259DDCF700760F40 /* ItemListView.swift */,
-				CBA0E595259DDA9200760F40 /* CategoryView.swift */,
 				CBA0E598259DDAA900760F40 /* NumberView.swift */,
 				CBA0E59B259DDAB300760F40 /* MemoView.swift */,
 				CBA0E59E259DDABF00760F40 /* ShoppingView.swift */,
@@ -155,7 +152,7 @@
 		CB31E0EE25D327B200A07A74 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				CB31E0F725D327B200A07A74 /* ContentViewModel.swift */,
+				CB31E0F725D327B200A07A74 /* ItemListViewModel.swift */,
 				CB31E0F825D327B200A07A74 /* NumberViewModel.swift */,
 				CB31E0F625D327B200A07A74 /* NumberTypeListViewModel.swift */,
 				CB31E0F025D327B200A07A74 /* ShoppingViewModel.swift */,
@@ -180,7 +177,7 @@
 		CBC2B53325D692CB0019FCBF /* ViewCellModel */ = {
 			isa = PBXGroup;
 			children = (
-				CB31E0F925D327B200A07A74 /* ContentViewCellModel.swift */,
+				CB31E0F925D327B200A07A74 /* ItemCellViewModel.swift */,
 				CB31E0F525D327B200A07A74 /* NumberViewCellModel.swift */,
 				CB31E0F125D327B200A07A74 /* ShoppingViewCellModel.swift */,
 				CB31E0F325D327B200A07A74 /* MemoViewCellModel.swift */,
@@ -369,12 +366,11 @@
 				CB31E12B25D3282D00A07A74 /* NumberModel.swift in Sources */,
 				CBA0E59F259DDABF00760F40 /* ShoppingView.swift in Sources */,
 				CBC30FB725BAFD7B00FECEB1 /* ShoppingTypeListView.swift in Sources */,
-				CB31E10825D327B200A07A74 /* ContentViewCellModel.swift in Sources */,
-				CBA0E58D259DD9E800760F40 /* ItemRowView.swift in Sources */,
+				CB31E10825D327B200A07A74 /* ItemCellViewModel.swift in Sources */,
+				CBA0E58D259DD9E800760F40 /* ItemCellView.swift in Sources */,
 				CBA0E5A5259DDAE100760F40 /* NumberInput.swift in Sources */,
 				CB31E10525D327B200A07A74 /* NumberTypeListViewModel.swift in Sources */,
 				CB31E10225D327B200A07A74 /* MemoViewCellModel.swift in Sources */,
-				CBA0E596259DDA9200760F40 /* CategoryView.swift in Sources */,
 				CB31E0FE25D327B200A07A74 /* MemoViewModel.swift in Sources */,
 				CB31E12825D3282D00A07A74 /* MemoModel.swift in Sources */,
 				CBCA5303259DC41700B2E008 /* SceneDelegate.swift in Sources */,
@@ -389,7 +385,7 @@
 				CBA0E5B2259DDC9500760F40 /* NavigationBarView.swift in Sources */,
 				CBA0E5A8259DDAF400760F40 /* CharacterInputView.swift in Sources */,
 				CBA0E599259DDAA900760F40 /* NumberView.swift in Sources */,
-				CB31E10625D327B200A07A74 /* ContentViewModel.swift in Sources */,
+				CB31E10625D327B200A07A74 /* ItemListViewModel.swift in Sources */,
 				CB31E10725D327B200A07A74 /* NumberViewModel.swift in Sources */,
 				CBA0E59C259DDAB300760F40 /* MemoView.swift in Sources */,
 				CB31E10025D327B200A07A74 /* ShoppingViewCellModel.swift in Sources */,

@@ -22,12 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           
             let itemModel = ItemModel()
             let tableName = ""
-            let item = Item(itemModel: itemModel)
-            let contentViewModel = ContentViewModel()
             let window = UIWindow(windowScene: windowScene)
           // Realmを最初に読み込むところ
-            let contentView = ContentView(model: contentViewModel,item: item, tableName: tableName)
-            .environmentObject(ContentViewModel())
+            let contentView = ContentView(tableName: tableName)
             .environmentObject(NumberViewModel())
           window.rootViewController = UIHostingController(rootView: contentView)
           self.window = window

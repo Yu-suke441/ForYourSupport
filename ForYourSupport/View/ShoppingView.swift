@@ -12,16 +12,16 @@ struct ShoppingView: View {
     @State var isOnChartToggle = false
     @State var shoppingMenus = ""
     @State var shoppingMoneys: Int
-    @ObservedObject var contentViewModel: ContentViewModel
+    var itemCellViewModel: ItemCellViewModel
    
     var body: some View {
         VStack(alignment: .leading) {
             
             HStack {
-                Image(contentViewModel.icon_file)
+                Image(itemCellViewModel.icon_file)
                     .resizable()
                     .frame(width:44, height: 44)
-                Text(contentViewModel.name)
+                Text(itemCellViewModel.name)
                     .font(.title)
                     .lineLimit(1)
                     .foregroundColor(.black)
@@ -39,9 +39,9 @@ struct ShoppingView: View {
                         Text("買った金額:\(shoppingMoneys)").font(.title)
                     }
                 }
-                .sheet(isPresented: $isOnToggle) {
-                    ShoppingInputView(contentViewModel: contentViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
-                }
+//                .sheet(isPresented: $isOnToggle) {
+//                    ShoppingInputView(contentViewModel: contentViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
+//                }
                 Spacer()
                 Button(action: {
                     self.isOnChartToggle.toggle()
@@ -51,9 +51,9 @@ struct ShoppingView: View {
                         .frame(width:50, height: 50)
                 })
                 .padding()
-                .sheet(isPresented: $isOnChartToggle) {
-                    ShoppingInputView(contentViewModel: contentViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
-                }
+//                .sheet(isPresented: $isOnChartToggle) {
+//                    ShoppingInputView(contentViewModel: contentViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
+//                }
             }
             
         }

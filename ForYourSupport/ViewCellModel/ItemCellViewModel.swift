@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentViewCellModel {
+struct ItemCellViewModel:Identifiable {
     let id: String
     let name: String
     let icon_file: String

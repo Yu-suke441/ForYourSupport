@@ -10,12 +10,10 @@ import SwiftUICharts
 
 struct GraphView: View {
     
-    var item: Item!
     
     var body: some View {
-        LineView(data: item.numbers, title: "\(item.name)")
-        // legend is optional, use optional .padding()
-        
+        LineView(data:[1.0,2.0])
+
     }
 }
 

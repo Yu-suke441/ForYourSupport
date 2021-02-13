@@ -12,16 +12,16 @@ struct NumberView: View {
     @State private var isOnToggle = false
     @State private var isOnGraphToggle = false
     @State private var isOnChartToggle = false
-    @State var number: String
-    @ObservedObject var contentViewModel: ContentViewModel
+    @State var number = 0
+    var itemCellViewModel : ItemCellViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(contentViewModel.icon_file)
+                Image(itemCellViewModel.icon_file)
                     .resizable()
                     .frame(width:44, height: 44)
-                Text(contentViewModel.name)
+                Text(itemCellViewModel.name)
                     .font(.title)
                     .lineLimit(1)
                     .foregroundColor(.black)
@@ -33,13 +33,39 @@ struct NumberView: View {
                 Button(action: {
                     self.isOnToggle.toggle()
                 }, label: {
-                    Text("\(contentViewModel.name):\(number)").font(.title)
+                    Text("\(itemCellViewModel.name):\(number)").font(.title)
                 })
-                .sheet(isPresented: $isOnToggle, content: {
-                    NumberInputView(number: $number, contentViewModel: contentViewModel)
-                })
+                //                .sheet(isPresented: $isOnToggle, content: {
+                //                    NumberInputView(number: $number, contentViewModel: contentViewModel)
+                //                })
+                
+                Spacer()
+                
+                VStack {
+                    Button(action: {
+                        self.isOnGraphToggle.toggle()
+                    }, label: {
+                        Image("graph")
+                            .resizable()
+                            .frame(width:50, height: 50)
+                    })
+                    .sheet(isPresented: $isOnGraphToggle) {
+                        GraphView()
+                    }
+                    Button(action: {
+                        self.isOnChartToggle.toggle()
+                    }, label: {
+                        Image("chart")
+                            .resizable()
+                            .frame(width:50, height: 50)
+                    })
+                    .sheet(isPresented: $isOnChartToggle) {
+                    }
+                }.padding()
             }
         }
+        .background(Color(.white))
+        .frame(maxWidth: .infinity)
     }
 }
 

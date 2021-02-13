@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MemoView: View {
-    @ObservedObject var contentViewModel: ContentViewModel
+    var itemCellViewModel: ItemCellViewModel
     @State var isOnToggle = false
     @State var isOnChartToggle = false
     @State var contents = ""
@@ -16,11 +16,11 @@ struct MemoView: View {
         VStack(alignment: .leading) {
             
             HStack {
-                Image(contentViewModel.icon_file)
+                Image(itemCellViewModel.icon_file)
                     .resizable()
                     .frame(width:44, height: 44)
                     
-                Text(contentViewModel.name)
+                Text(itemCellViewModel.name)
                     .font(.title)
                     .lineLimit(1)
                     .foregroundColor(.black)
@@ -33,13 +33,13 @@ struct MemoView: View {
                 Button(action: {
                     self.isOnToggle.toggle()
                 }) {
-                    Text("\(contentViewModel.name):\(contents)")
+                    Text("\(itemCellViewModel.name):\(contents)")
                         .font(.title)
                         .lineLimit(1)
                 }
-                .sheet(isPresented: $isOnToggle) {
-                    CharacterInputView(contentViewModel: contentViewModel, content: $contents)
-                }
+//                .sheet(isPresented: $isOnToggle) {
+//                    CharacterInputView(contentViewModel: contentViewModel, content: $contents)
+//                }
                 
                 Spacer()
                 
@@ -51,9 +51,9 @@ struct MemoView: View {
                         .frame(width:50, height: 50)
                 })
                 .padding()
-                .sheet(isPresented: $isOnChartToggle) {
-                    CharacterInputView(contentViewModel: contentViewModel, content: $contents)
-                }
+//                .sheet(isPresented: $isOnChartToggle) {
+//                    CharacterInputView(contentViewModel: contentViewModel, content: $contents)
+//                }
             }
         }
         .background(Color(.white))

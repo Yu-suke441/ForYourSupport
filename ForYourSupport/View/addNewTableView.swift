@@ -14,7 +14,7 @@ struct addNewTableView: View {
     var icons = ["chart","graph","detail","check-mark","heart_rate","meal","memo","shopping","task","thermometer","through","time_of_sleep","weight-scale"]
     @Binding var tableName: String
     @Environment(\.presentationMode) var presentation
-    @ObservedObject var Store: ContentViewModel
+    var itemCellViewModel : ItemCellViewModel
     var body: some View {
         NavigationView {
             Form {
