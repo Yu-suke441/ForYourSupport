@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MemoView: View {
-    @State var itemModel: ItemModel
+    @ObservedObject var contentViewModel: ContentViewModel
     @State var isOnToggle = false
     @State var isOnChartToggle = false
     @State var contents = ""
@@ -16,11 +16,11 @@ struct MemoView: View {
         VStack(alignment: .leading) {
             
             HStack {
-                Image(itemModel.icon_file)
+                Image(contentViewModel.icon_file)
                     .resizable()
                     .frame(width:44, height: 44)
                     
-                Text(itemModel.name)
+                Text(contentViewModel.name)
                     .font(.title)
                     .lineLimit(1)
                     .foregroundColor(.black)
@@ -33,12 +33,12 @@ struct MemoView: View {
                 Button(action: {
                     self.isOnToggle.toggle()
                 }) {
-                    Text("\(itemModel.name):\(contents)")
+                    Text("\(contentViewModel.name):\(contents)")
                         .font(.title)
                         .lineLimit(1)
                 }
                 .sheet(isPresented: $isOnToggle) {
-                    CharacterInputView(itemModel: itemModel, content: $contents)
+                    CharacterInputView(contentViewModel: contentViewModel, content: $contents)
                 }
                 
                 Spacer()
@@ -52,7 +52,7 @@ struct MemoView: View {
                 })
                 .padding()
                 .sheet(isPresented: $isOnChartToggle) {
-                    CharacterInputView(itemModel: itemModel, content: $contents)
+                    CharacterInputView(contentViewModel: contentViewModel, content: $contents)
                 }
             }
         }

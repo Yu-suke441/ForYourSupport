@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct CharacterInputView: View {
-    @State var itemModel: ItemModel
+    @ObservedObject var contentViewModel: ContentViewModel
     @State var isOnToggle = false
     @Environment(\.presentationMode) var presentation
     @Binding var content: String
@@ -17,7 +17,7 @@ struct CharacterInputView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text(itemModel.name)) {
+                Section(header: Text(contentViewModel.name)) {
                     TextEditor(text: $content)
                         .frame(width: UIScreen.main.bounds.width, height: 200)
                         .overlay(RoundedRectangle(cornerRadius: 10)
@@ -26,7 +26,7 @@ struct CharacterInputView: View {
                 }
             }
             .listStyle(GroupedListStyle())
-            .navigationTitle("\(itemModel.name)")
+            .navigationTitle("\(contentViewModel.name)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

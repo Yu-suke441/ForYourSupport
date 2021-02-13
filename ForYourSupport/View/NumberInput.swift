@@ -11,18 +11,18 @@ import RealmSwift
 struct NumberInputView: View {
     @Binding var number: String
     @Environment(\.presentationMode) var presentation
-    @State var itemModel: ItemModel
+    @ObservedObject var contentViewModel: ContentViewModel
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text(itemModel.name)) {
+                Section(header: Text(contentViewModel.name)) {
                     TextField("数値を入力してください", text: $number)
                         .keyboardType(.decimalPad)
                         
                     }
             }
             .listStyle(GroupedListStyle())
-            .navigationTitle("\(itemModel.name)")
+            .navigationTitle("\(contentViewModel.name)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

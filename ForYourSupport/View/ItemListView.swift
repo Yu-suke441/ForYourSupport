@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ItemListView: View {
     @State var items: [Item]
-    @ObservedObject var model: ContentViewModel
+    @ObservedObject var contentViewModel: ContentViewModel
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 1)
     var body: some View {
         
          ScrollView {
              LazyVGrid(columns: columns) {
-                ForEach(model.models) { model in
+                ForEach(contentViewModel.models, id: \.id) { model in
                     HStack {
-                        ItemRowView(itemModel: model)
+                        ItemRowView(contentViewModel: contentViewModel)
                             .contextMenu(ContextMenu(menuItems: {
                                 Button(action: {
                                 }, label: {

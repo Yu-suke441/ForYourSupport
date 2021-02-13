@@ -9,18 +9,18 @@ import SwiftUI
 
 struct CategoryView: View {
     @State var number: String
-    @State var itemModel: ItemModel
+    @ObservedObject var contentViewModel: ContentViewModel
     var body: some View {
-        if itemModel.record_type == "Number" {
-            NumberView(number: number, itemModel: itemModel)
+        if contentViewModel.record_type == "Number" {
+            NumberView(number: number, contentViewModel: contentViewModel)
                 .cornerRadius(7)
                 .shadow(radius:3)
-        } else if itemModel.record_type == "Memo" {
-            MemoView(itemModel: itemModel)
+        } else if contentViewModel.record_type == "Memo" {
+            MemoView(contentViewModel: contentViewModel)
                 .cornerRadius(7)
                 .shadow(radius:3)
-        } else if itemModel.record_type == "Shopping" {
-            ShoppingView(shoppingMoneys: 0, itemModel: itemModel)
+        } else if contentViewModel.record_type == "Shopping" {
+            ShoppingView(shoppingMoneys: 0, contentViewModel: contentViewModel)
                 .cornerRadius(7)
                 .shadow(radius:3)
         }

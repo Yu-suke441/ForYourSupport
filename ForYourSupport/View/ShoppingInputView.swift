@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShoppingInputView: View {
-    @State var itemModel: ItemModel
+    @ObservedObject var contentViewModel: ContentViewModel
     @Binding var shoppingMenu: String
     @Binding var shoppingMoney: Int
     @Environment(\.presentationMode) var presentation
@@ -25,7 +25,7 @@ struct ShoppingInputView: View {
                 }
             }
             .listStyle(GroupedListStyle())
-            .navigationTitle("\(itemModel.name)")
+            .navigationTitle("\(contentViewModel.name)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

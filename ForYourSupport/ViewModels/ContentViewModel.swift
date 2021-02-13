@@ -21,11 +21,11 @@ class ContentViewModel: ObservableObject {
     deinit {
         token?.invalidate()
     }
-//    @Published var id = ""
-//    @Published var name = ""
-//    @Published var icon_file = ""
-//    @Published var record_type = ""
-//    @Published var odr = 0
+    @Published var id = ""
+    @Published var name = ""
+    @Published var icon_file = ""
+    @Published var record_type = ""
+    @Published var odr = 0
 }
 
 struct Item: Identifiable {

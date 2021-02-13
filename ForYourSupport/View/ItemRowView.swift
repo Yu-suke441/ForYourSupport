@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ItemRowView: View {
-    @ObservedObject var itemModel: ItemModel
+    @ObservedObject var contentViewModel: ContentViewModel
     
     var body: some View {
-        CategoryView(number: "", itemModel: itemModel)
+        CategoryView(number: "", contentViewModel: contentViewModel)
     }
 }

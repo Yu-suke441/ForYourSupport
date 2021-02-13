@@ -13,15 +13,15 @@ struct NumberView: View {
     @State private var isOnGraphToggle = false
     @State private var isOnChartToggle = false
     @State var number: String
-    @State var itemModel: ItemModel
+    @ObservedObject var contentViewModel: ContentViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(itemModel.icon_file)
+                Image(contentViewModel.icon_file)
                     .resizable()
                     .frame(width:44, height: 44)
-                Text(itemModel.name)
+                Text(contentViewModel.name)
                     .font(.title)
                     .lineLimit(1)
                     .foregroundColor(.black)
@@ -33,10 +33,10 @@ struct NumberView: View {
                 Button(action: {
                     self.isOnToggle.toggle()
                 }, label: {
-                    Text("\(itemModel.name):\(number)").font(.title)
+                    Text("\(contentViewModel.name):\(number)").font(.title)
                 })
                 .sheet(isPresented: $isOnToggle, content: {
-                    NumberInputView(number: $number, itemModel: itemModel)
+                    NumberInputView(number: $number, contentViewModel: contentViewModel)
                 })
             }
         }

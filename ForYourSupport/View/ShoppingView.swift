@@ -12,16 +12,16 @@ struct ShoppingView: View {
     @State var isOnChartToggle = false
     @State var shoppingMenus = ""
     @State var shoppingMoneys: Int
-    @State var itemModel: ItemModel
+    @ObservedObject var contentViewModel: ContentViewModel
    
     var body: some View {
         VStack(alignment: .leading) {
             
             HStack {
-                Image(itemModel.icon_file)
+                Image(contentViewModel.icon_file)
                     .resizable()
                     .frame(width:44, height: 44)
-                Text(itemModel.name)
+                Text(contentViewModel.name)
                     .font(.title)
                     .lineLimit(1)
                     .foregroundColor(.black)
@@ -40,7 +40,7 @@ struct ShoppingView: View {
                     }
                 }
                 .sheet(isPresented: $isOnToggle) {
-                    ShoppingInputView(itemModel: itemModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
+                    ShoppingInputView(contentViewModel: contentViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
                 }
                 Spacer()
                 Button(action: {
@@ -52,7 +52,7 @@ struct ShoppingView: View {
                 })
                 .padding()
                 .sheet(isPresented: $isOnChartToggle) {
-                    ShoppingInputView(itemModel: itemModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
+                    ShoppingInputView(contentViewModel: contentViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
                 }
             }
             
