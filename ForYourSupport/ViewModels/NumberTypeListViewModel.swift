@@ -1,23 +1,36 @@
 //
-//  CharacterTypeViewModel.swift
+//  NumberTypeListViewModel.swift
 //  ForYourSupport
 //
-//  Created by Yusuke Murayama on 2021/01/22.
+//  Created by Yusuke Murayama on 2021/01/14.
 //
 
 import Combine
 import Foundation
 import RealmSwift
 
+extension RandomAccessCollection where Self.Element: Identifiable {
+    public func isLastItem<Item: Identifiable>(_ item: Item) -> Bool {
+        guard !isEmpty else {
+            return false
+        }
+
+        guard let itemIndex = lastIndex(where: { AnyHashable($0.id) == AnyHashable(item.id) }) else {
+            return false
+        }
+
+        let distance = self.distance(from: itemIndex, to: endIndex)
+        return distance == 1
+    }
+}
 
 
 
-
-final class CharacterTypeViewModel: ObservableObject {
-    @Published var memos: [MemoDB] = []
+final class NumberTypeListViewModel: ObservableObject {
+    @Published var numbers: [NumberModel] = []
     @Published var isLoading = false
     var item: Item!
-    var memoTables: Results<MemoDB>!
+    var numberTables: Results<NumberModel>!
     
     private var cancellables: Set<AnyCancellable> = []
 
@@ -26,8 +39,8 @@ final class CharacterTypeViewModel: ObservableObject {
     init(item: Item) {
         self.item = item
     }
-    func loadNext(item: MemoDB) {
-        if memos.isLastItem(item) {
+    func loadNext(item: NumberModel) {
+        if numbers.isLastItem(item) {
             self.currentPage += 1
             getNumberList(page: currentPage, perPage: perPage) { [weak self] result in
                     self?.handleResult(result)
@@ -42,7 +55,7 @@ final class CharacterTypeViewModel: ObservableObject {
     }
     
     private func getNumberList(page: Int, perPage: Int,
-                                  completion: @escaping (Result<[MemoDB], Error>) -> Void) {
+                                  completion: @escaping (Result<[NumberModel], Error>) -> Void) {
 
         let parameters: [String: Any] = [
                 "page": currentPage,
@@ -51,16 +64,16 @@ final class CharacterTypeViewModel: ObservableObject {
         
         print(item)
         let realm = try! Realm()
-        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
-        let results = itemDB?.memos
-        self.memos = results!.compactMap({ (memoTable) -> MemoDB? in
-            return memoTable
+        let itemDB = realm.object(ofType: ItemModel.self, forPrimaryKey: item!.id)
+        let results = itemDB?.numbers
+        self.numbers = results!.compactMap({ (numberTable) -> NumberModel? in
+            return numberTable
             
         })
 
     }
     
-    private func handleResult(_ result: Result<[MemoDB], Error>) {
+    private func handleResult(_ result: Result<[NumberModel], Error>) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
@@ -69,11 +82,15 @@ final class CharacterTypeViewModel: ObservableObject {
             switch result {
             case .success(let items):
                 self.currentPage += 1
-                self.memos.append(contentsOf: items)
+//                self.numbers.append(contentsOf: items)
+                print(self.numbers.count)
+                self.numbers = items
             case .failure(let error):
                 self.currentPage = 1
                 print(error)
             }
         }
     }
+    
+    
 }

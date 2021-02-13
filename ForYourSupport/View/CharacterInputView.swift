@@ -9,8 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct CharacterInputView: View {
-    
-    let item: Item!
+    @State var itemModel: ItemModel
     @State var isOnToggle = false
     @Environment(\.presentationMode) var presentation
     @Binding var content: String
@@ -18,7 +17,7 @@ struct CharacterInputView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text(item.name)) {
+                Section(header: Text(itemModel.name)) {
                     TextEditor(text: $content)
                         .frame(width: UIScreen.main.bounds.width, height: 200)
                         .overlay(RoundedRectangle(cornerRadius: 10)
@@ -27,12 +26,11 @@ struct CharacterInputView: View {
                 }
             }
             .listStyle(GroupedListStyle())
-            .navigationTitle("\(item.name)")
+            .navigationTitle("\(itemModel.name)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        update(changed: false)
                         presentation.wrappedValue.dismiss()
                     }, label: {
                         Text("次へ")
@@ -47,35 +45,6 @@ struct CharacterInputView: View {
                     })
                 }
             }
-        }
-    }
-
-    func update(changed: Bool) {
-        guard !changed else { return }
-        func newID(realm: Realm) -> Int {
-            if let number = realm.objects(MemoDB.self).sorted(byKeyPath: "id").last {
-                return number.id + 1
-            } else {
-                    return 1
-            }
-        }
-                    
-                
-        let realm = try! Realm()
-                                
-        let memoDB = MemoDB()
-        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
-        
-        memoDB.id = newID(realm: realm)
-        memoDB.item_id = item!.id
-                
-        memoDB.memo = self.content
-        memoDB.recorded_date = Date()
-                    
-                                    
-        try! realm.write{
-            itemDB?.memos.append(memoDB)
-            //realm.add(num, update: .modified)
         }
     }
 }

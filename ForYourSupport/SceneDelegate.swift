@@ -19,16 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       if let windowScene = scene as? UIWindowScene {
         
         do {
-          let realm = try Realm()
-            let itemDB = ItemDB()
+          
+            let itemModel = ItemModel()
             let tableName = ""
-            let item = Item(itemDB: itemDB)
-            
+            let item = Item(itemModel: itemModel)
+            let contentViewModel = ContentViewModel()
             let window = UIWindow(windowScene: windowScene)
           // Realmを最初に読み込むところ
-            let contentView = ContentView(item: item, tableName: tableName)
-            .environmentObject(ItemStore(realm: realm))
-            .environmentObject(NumberStore(realm: realm))
+            let contentView = ContentView(model: contentViewModel,item: item, tableName: tableName)
+            .environmentObject(ContentViewModel())
+            .environmentObject(NumberViewModel())
           window.rootViewController = UIHostingController(rootView: contentView)
           self.window = window
           window.makeKeyAndVisible()

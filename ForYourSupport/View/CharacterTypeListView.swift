@@ -10,8 +10,8 @@ import SwiftUI
 struct CharacterTypeListView: View {
     @ObservedObject var viewModel: CharacterTypeViewModel
     @Environment(\.presentationMode) var presentation
-    let memo = MemoDB()
-    let item = ItemDB()
+    let memo = MemoModel()
+    let item = ItemModel()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()

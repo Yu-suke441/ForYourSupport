@@ -11,7 +11,7 @@ struct ShoppingTypeListView: View {
     @ObservedObject var viewModel: ShoppingTypeListViewModel
     @Environment(\.presentationMode) var presentation
     @State private var selectDate = Date()
-    let item = ItemDB()
+    let item = ItemModel()
     
     let dt = Date()
     var dateFormatter: DateFormatter {

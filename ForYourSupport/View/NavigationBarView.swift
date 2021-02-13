@@ -16,6 +16,7 @@ struct NavigationBarView: View {
     @State var showAddTablePicker = false
     var item: Item!
     @State var tableName: String
+    @ObservedObject var contentViewModel = ContentViewModel()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -48,7 +49,7 @@ struct NavigationBarView: View {
                     .font(.headline)
                     .foregroundColor(.white)
                     .sheet(isPresented: $showAddTablePicker) {
-                        addNewTableView(tableName: $tableName)
+                        addNewTableView(tableName: $tableName, Store: contentViewModel)
                     }
             })
             Button(action: {

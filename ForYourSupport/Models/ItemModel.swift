@@ -1,16 +1,16 @@
 //
-//  ItemDB.swift
-//  ForYourSupport
+//  ItemModel.swift
+//  YourSupport
 //
-//  Created by Yusuke Murayama on 2020/12/31.
+//  Created by Yusuke Murayama on 2021/02/09.
 //
 
 import Foundation
 import RealmSwift
 
-// Realm用のclass
-class ItemDB: Object{
-    @objc dynamic var id = 0
+
+class ItemModel: Object, Identifiable{
+    @objc dynamic var id = UUID().uuidString
     
     @objc dynamic var name = ""
     
@@ -20,18 +20,15 @@ class ItemDB: Object{
     
     @objc dynamic var odr = 0
     
-    let numbers = List<NumberDB>()
+    let numbers = List<NumberModel>()
     
-    let memos = List<MemoDB>()
+    let memos = List<MemoModel>()
     
-    let shoppings = List<ShoppingDB>()
+    let shoppings = List<ShoppingModel>()
 
     // 主キーを使うとデータの更新や削除で使える
     override static func primaryKey() -> String? {
         return "id"
     }
 }
-
-
-
 

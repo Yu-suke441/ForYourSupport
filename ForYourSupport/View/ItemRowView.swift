@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ItemRowView: View {
-    @EnvironmentObject var store: ItemStore
-    let item: Item
+    @ObservedObject var itemModel: ItemModel
     
     var body: some View {
-        CategoryView(item: item, number: "")
+        CategoryView(number: "", itemModel: itemModel)
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct ContentView: View {
-    @EnvironmentObject var store: ItemStore
+    @ObservedObject var model: ContentViewModel
     var item : Item
     @State var tableName: String
     var body: some View {
@@ -17,8 +17,7 @@ struct ContentView: View {
             Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)).edgesIgnoringSafeArea(.top).frame(height:0)
             
             NavigationBarView(item: item, tableName: tableName)
-            ItemListView(items: store.items)
-                
+            ItemListView(items: [item], model: model)
         }
         .background(Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)))
         .edgesIgnoringSafeArea(.bottom)
@@ -28,13 +27,7 @@ struct ContentView: View {
             var itemConfig = Realm.Configuration()
             itemConfig.fileURL = itemConfig.fileURL!.deletingLastPathComponent()
                 .appendingPathComponent("item.realm")
-            
-            
-            
         }
-        
-        
-        
     }
     
     
@@ -43,7 +36,5 @@ struct ContentView: View {
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ContentView()
-//        
 //    }
 //}
-//

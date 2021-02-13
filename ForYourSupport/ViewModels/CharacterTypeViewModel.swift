@@ -1,36 +1,23 @@
 //
-//  NumberTypeListViewModel.swift
+//  CharacterTypeViewModel.swift
 //  ForYourSupport
 //
-//  Created by Yusuke Murayama on 2021/01/14.
+//  Created by Yusuke Murayama on 2021/01/22.
 //
 
 import Combine
 import Foundation
 import RealmSwift
 
-extension RandomAccessCollection where Self.Element: Identifiable {
-    public func isLastItem<Item: Identifiable>(_ item: Item) -> Bool {
-        guard !isEmpty else {
-            return false
-        }
-
-        guard let itemIndex = lastIndex(where: { AnyHashable($0.id) == AnyHashable(item.id) }) else {
-            return false
-        }
-
-        let distance = self.distance(from: itemIndex, to: endIndex)
-        return distance == 1
-    }
-}
 
 
 
-final class NumberTypeListViewModel: ObservableObject {
-    @Published var numbers: [NumberDB] = []
+
+final class CharacterTypeViewModel: ObservableObject {
+    @Published var memos: [MemoModel] = []
     @Published var isLoading = false
     var item: Item!
-    var numberTables: Results<NumberDB>!
+    var memoTables: Results<MemoModel>!
     
     private var cancellables: Set<AnyCancellable> = []
 
@@ -39,8 +26,8 @@ final class NumberTypeListViewModel: ObservableObject {
     init(item: Item) {
         self.item = item
     }
-    func loadNext(item: NumberDB) {
-        if numbers.isLastItem(item) {
+    func loadNext(item: MemoModel) {
+        if memos.isLastItem(item) {
             self.currentPage += 1
             getNumberList(page: currentPage, perPage: perPage) { [weak self] result in
                     self?.handleResult(result)
@@ -55,7 +42,7 @@ final class NumberTypeListViewModel: ObservableObject {
     }
     
     private func getNumberList(page: Int, perPage: Int,
-                                  completion: @escaping (Result<[NumberDB], Error>) -> Void) {
+                                  completion: @escaping (Result<[MemoModel], Error>) -> Void) {
 
         let parameters: [String: Any] = [
                 "page": currentPage,
@@ -64,16 +51,16 @@ final class NumberTypeListViewModel: ObservableObject {
         
         print(item)
         let realm = try! Realm()
-        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
-        let results = itemDB?.numbers
-        self.numbers = results!.compactMap({ (numberTable) -> NumberDB? in
-            return numberTable
+        let itemDB = realm.object(ofType: ItemModel.self, forPrimaryKey: item!.id)
+        let results = itemDB?.memos
+        self.memos = results!.compactMap({ (memoTable) -> MemoModel? in
+            return memoTable
             
         })
 
     }
     
-    private func handleResult(_ result: Result<[NumberDB], Error>) {
+    private func handleResult(_ result: Result<[MemoModel], Error>) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
@@ -82,15 +69,11 @@ final class NumberTypeListViewModel: ObservableObject {
             switch result {
             case .success(let items):
                 self.currentPage += 1
-//                self.numbers.append(contentsOf: items)
-                print(self.numbers.count)
-                self.numbers = items
+                self.memos.append(contentsOf: items)
             case .failure(let error):
                 self.currentPage = 1
                 print(error)
             }
         }
     }
-    
-    
 }

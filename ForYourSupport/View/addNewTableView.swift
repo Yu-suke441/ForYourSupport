@@ -14,7 +14,7 @@ struct addNewTableView: View {
     var icons = ["chart","graph","detail","check-mark","heart_rate","meal","memo","shopping","task","thermometer","through","time_of_sleep","weight-scale"]
     @Binding var tableName: String
     @Environment(\.presentationMode) var presentation
-    @EnvironmentObject var itemStore: ItemStore
+    @ObservedObject var Store: ContentViewModel
     var body: some View {
         NavigationView {
             Form {
@@ -59,7 +59,6 @@ struct addNewTableView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                             presentation.wrappedValue.dismiss()
-                        itemStore.create(name: tableName, icon_file: self.icons[iconIndex], record_type: selections[selection], odr: 5)
 
                     }, label: {
                         Text("テーブル追加")

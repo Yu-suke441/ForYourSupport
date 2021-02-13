@@ -12,8 +12,8 @@ struct NumberTypeListView: View {
     
     @ObservedObject var viewModel: NumberTypeListViewModel
     @Environment(\.presentationMode) var presentation
-    @EnvironmentObject var numberStore: NumberStore
-    let item = ItemDB()
+    @EnvironmentObject var numberStore: NumberViewModel
+    let item = ItemModel()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -64,7 +64,7 @@ struct NumberTypeListView: View {
         }
         let deleteItem = viewModel.numbers[index]
         viewModel.numbers.remove(at: index)
-        numberStore.delete(id: deleteItem.id)
+//        numberStore.delete(id: deleteItem.id)
         
         
         

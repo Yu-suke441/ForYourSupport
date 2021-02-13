@@ -10,10 +10,10 @@ import Foundation
 import RealmSwift
 
 final class ShoppingTypeListViewModel: ObservableObject {
-    @Published var shoppings: [ShoppingDB] = []
+    @Published var shoppings: [ShoppingModel] = []
     @Published var isLoading = false
     var item: Item!
-    var memoTables: Results<ShoppingDB>!
+    var memoTables: Results<ShoppingModel>!
     
     private var cancellables: Set<AnyCancellable> = []
 
@@ -22,7 +22,7 @@ final class ShoppingTypeListViewModel: ObservableObject {
     init(item: Item) {
         self.item = item
     }
-    func loadNext(item: ShoppingDB) {
+    func loadNext(item: ShoppingModel) {
         if shoppings.isLastItem(item) {
             self.currentPage += 1
             getNumberList(page: currentPage, perPage: perPage) { [weak self] result in
@@ -38,7 +38,7 @@ final class ShoppingTypeListViewModel: ObservableObject {
     }
     
     private func getNumberList(page: Int, perPage: Int,
-                                  completion: @escaping (Result<[ShoppingDB], Error>) -> Void) {
+                                  completion: @escaping (Result<[ShoppingModel], Error>) -> Void) {
 
         let parameters: [String: Any] = [
                 "page": currentPage,
@@ -47,16 +47,16 @@ final class ShoppingTypeListViewModel: ObservableObject {
         
         print(item)
         let realm = try! Realm()
-        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
+        let itemDB = realm.object(ofType: ItemModel.self, forPrimaryKey: item!.id)
         let results = itemDB?.shoppings
-        self.shoppings = results!.compactMap({ (memoTable) -> ShoppingDB? in
+        self.shoppings = results!.compactMap({ (memoTable) -> ShoppingModel? in
             return memoTable
             
         })
 
     }
     
-    private func handleResult(_ result: Result<[ShoppingDB], Error>) {
+    private func handleResult(_ result: Result<[ShoppingModel], Error>) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return

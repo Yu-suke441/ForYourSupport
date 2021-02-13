@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct ItemListView: View {
-    @EnvironmentObject var store: ItemStore
     @State var items: [Item]
+    @ObservedObject var model: ContentViewModel
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 1)
     var body: some View {
         
          ScrollView {
              LazyVGrid(columns: columns) {
-                ForEach(items) { item in
+                ForEach(model.models) { model in
                     HStack {
-                        ItemRowView(item: item)
+                        ItemRowView(itemModel: model)
                             .contextMenu(ContextMenu(menuItems: {
                                 Button(action: {
-                                    store.delete(itemID: item.id)
                                 }, label: {
                                     Text("テーブルの削除")
                                 })

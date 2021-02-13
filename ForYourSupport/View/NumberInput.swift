@@ -6,34 +6,34 @@
 //
 
 import SwiftUI
-import KeyboardObserving
-import Combine
 import RealmSwift
 
-
-
-
-struct ModalView: View {
+struct NumberInputView: View {
     @Binding var number: String
-    let item: Item!
     @Environment(\.presentationMode) var presentation
-
+    @State var itemModel: ItemModel
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text(item.name)) {
+                Section(header: Text(itemModel.name)) {
                     TextField("数値を入力してください", text: $number)
                         .keyboardType(.decimalPad)
                         
                     }
             }
             .listStyle(GroupedListStyle())
-            .navigationTitle("\(item.name)")
+            .navigationTitle("\(itemModel.name)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        update()
+                        let myModel = NumberModel()
+                        myModel.recorded_at = Date()
+                        let realm = try? Realm()
+                        try? realm?.write {
+                            realm?.add(myModel)
+                            print(myModel)
+                        }
                         presentation.wrappedValue.dismiss()
                     }, label: {
                         Text("次へ")
@@ -50,33 +50,9 @@ struct ModalView: View {
             }
         }
     }
-    func update(){
-        func newID(realm: Realm) -> Int {
-            if let number = realm.objects(NumberDB.self).sorted(byKeyPath: "id").last {
-                return number.id + 1
-            } else {
-                    return 1
-            }
-        }
-        
-        
-        let realm = try! Realm()
-                            
-        let num = NumberDB()
-        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
-
-        num.id = newID(realm: realm)
-        num.item_id = item!.id
-        
-        num.value = atof(number)
-        num.recorded_at = Date()
-        
-                        
-        try! realm.write{
-            itemDB?.numbers.append(num)
-            //realm.add(num, update: .modified)
-        }
-    }
+    
+    
+    
 }
 
 

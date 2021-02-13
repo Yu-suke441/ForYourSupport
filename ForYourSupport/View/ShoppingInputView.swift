@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct ShoppingInputView: View {
-    @EnvironmentObject var store: ItemStore
-    let item: Item!
+    @State var itemModel: ItemModel
     @Binding var shoppingMenu: String
     @Binding var shoppingMoney: Int
     @Environment(\.presentationMode) var presentation
@@ -27,12 +25,11 @@ struct ShoppingInputView: View {
                 }
             }
             .listStyle(GroupedListStyle())
-            .navigationTitle("\(item.name)")
+            .navigationTitle("\(itemModel.name)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        create()
                         presentation.wrappedValue.dismiss()
                     }, label: {
                         Text("次へ")
@@ -51,35 +48,8 @@ struct ShoppingInputView: View {
         }
     }
     
-    func create() {
-        func newID(realm: Realm) -> Int {
-            if let number = realm.objects(ShoppingDB.self).sorted(byKeyPath: "id").last {
-                return number.id + 1
-            } else {
-                    return 1
-            }
-        }
-        
-        
-        let realm = try! Realm()
-                            
-        let shoppingDB = ShoppingDB()
-        let itemDB = realm.object(ofType: ItemDB.self, forPrimaryKey: item!.id)
-
-        shoppingDB.id = newID(realm: realm)
-        shoppingDB.item_id = item!.id
-        shoppingDB.product_name = self.shoppingMenu
-        shoppingDB.product_price = self.shoppingMoney
-        shoppingDB.recorded_date = Date()
-        
-                        
-        try! realm.write{
-            itemDB?.shoppings.append(shoppingDB)
-//                            realm.add(num, update: .modified)
-        }
-    }
+    
 }
-
 extension Binding where Value == Int {
     func IntToStrDef(_ def: Int) -> Binding<String> {
         return Binding<String>(get: {

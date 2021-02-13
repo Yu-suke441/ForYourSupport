@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct SettingView: View {
-    @EnvironmentObject var store: NumberStore
+    @EnvironmentObject var store: NumberViewModel
     var body: some View {
         NavigationView {
             List {
