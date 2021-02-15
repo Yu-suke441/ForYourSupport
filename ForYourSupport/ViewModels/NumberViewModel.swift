@@ -10,12 +10,12 @@ import RealmSwift
 
 class NumberViewModel: ObservableObject {
     private var token: NotificationToken?
-    private var myModelResults = try? Realm().objects(NumberModel.self)
-    @Published var numberCellModels: [NumberViewCellModel] = []
+    private var numberModelResults = try? Realm().objects(NumberModel.self)
+    @Published var numberViewCellModels: [NumberViewCellModel] = []
     
     init() {
-        token = myModelResults?.observe{[weak self] _ in
-            self?.numberCellModels = self?.myModelResults?.map{ NumberViewCellModel(id: $0.id, item_id: $0.item_id, value: Double($0.value),recorded_at: $0.recorded_at) } ?? []
+        token = numberModelResults?.observe{[weak self] _ in
+            self?.numberViewCellModels = self?.numberModelResults?.map{ NumberViewCellModel(id: $0.id, item_id: $0.item_id, value: Double($0.value),recorded_at: $0.recorded_at) } ?? []
         }
     }
     deinit {
@@ -24,6 +24,8 @@ class NumberViewModel: ObservableObject {
     
     
 }
+
+
 //struct NumberViewModel: Identifiable {
 //    let id : String
 //    let item_id: Int

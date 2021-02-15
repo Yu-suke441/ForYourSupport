@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NumberViewCellModel {
-    let id: String
+    let id: Int
     let item_id :Int
     let value: Double
     let recorded_at: Date

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ItemCellView: View {
     var itemCellViewModel: ItemCellViewModel
-    
     var body: some View {
         if itemCellViewModel.record_type == "Number" {
             NumberView(itemCellViewModel: itemCellViewModel)

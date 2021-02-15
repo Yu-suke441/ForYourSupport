@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MemoViewCellModel {
-    let id: String
+    let id: Int
     let item_id :Int
     let memo: String
     let recorded_date: Date

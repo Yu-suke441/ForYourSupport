@@ -10,7 +10,7 @@ import RealmSwift
 
 class NumberModel: Object, Identifiable {
     
-    @objc dynamic var id = UUID().uuidString
+    @objc dynamic var id = 0
     
     @objc dynamic var item_id = 0
     

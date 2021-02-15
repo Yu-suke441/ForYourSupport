@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShoppingViewCellModel {
-    let id: String
+    let id: Int
     let item_id :Int
     let product_name: String
     let product_price: Int

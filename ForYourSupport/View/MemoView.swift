@@ -37,9 +37,9 @@ struct MemoView: View {
                         .font(.title)
                         .lineLimit(1)
                 }
-//                .sheet(isPresented: $isOnToggle) {
-//                    CharacterInputView(contentViewModel: contentViewModel, content: $contents)
-//                }
+                .sheet(isPresented: $isOnToggle) {
+                    CharacterInputView(itemCellViewModel: itemCellViewModel, content: $contents)
+                }
                 
                 Spacer()
                 
@@ -51,9 +51,9 @@ struct MemoView: View {
                         .frame(width:50, height: 50)
                 })
                 .padding()
-//                .sheet(isPresented: $isOnChartToggle) {
-//                    CharacterInputView(contentViewModel: contentViewModel, content: $contents)
-//                }
+                .sheet(isPresented: $isOnChartToggle) {
+                    
+                }
             }
         }
         .background(Color(.white))

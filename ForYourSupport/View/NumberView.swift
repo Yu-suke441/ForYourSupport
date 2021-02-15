@@ -12,7 +12,7 @@ struct NumberView: View {
     @State private var isOnToggle = false
     @State private var isOnGraphToggle = false
     @State private var isOnChartToggle = false
-    @State var number = 0
+    @State var number = ""
     var itemCellViewModel : ItemCellViewModel
     
     var body: some View {
@@ -35,9 +35,9 @@ struct NumberView: View {
                 }, label: {
                     Text("\(itemCellViewModel.name):\(number)").font(.title)
                 })
-                //                .sheet(isPresented: $isOnToggle, content: {
-                //                    NumberInputView(number: $number, contentViewModel: contentViewModel)
-                //                })
+                .sheet(isPresented: $isOnToggle, content: {
+                    NumberInputView(number: $number, itemCellViewModel: itemCellViewModel)
+                })
                 
                 Spacer()
                 

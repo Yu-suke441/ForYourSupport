@@ -25,6 +25,7 @@ struct ContentView: View {
             var itemConfig = Realm.Configuration()
             itemConfig.fileURL = itemConfig.fileURL!.deletingLastPathComponent()
                 .appendingPathComponent("item.realm")
+            
         }
     }
     

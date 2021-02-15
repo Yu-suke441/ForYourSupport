@@ -39,9 +39,9 @@ struct ShoppingView: View {
                         Text("買った金額:\(shoppingMoneys)").font(.title)
                     }
                 }
-//                .sheet(isPresented: $isOnToggle) {
-//                    ShoppingInputView(contentViewModel: contentViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
-//                }
+                .sheet(isPresented: $isOnToggle) {
+                    ShoppingInputView(itemCellViewModel: itemCellViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
+                }
                 Spacer()
                 Button(action: {
                     self.isOnChartToggle.toggle()

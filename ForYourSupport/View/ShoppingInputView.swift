@@ -7,55 +7,55 @@
 
 import SwiftUI
 
-//struct ShoppingInputView: View {
-//    @ObservedObject var contentViewModel: ContentViewModel
-//    @Binding var shoppingMenu: String
-//    @Binding var shoppingMoney: Int
-//    @Environment(\.presentationMode) var presentation
-//    
-//    var body: some View {
-//        
-//        NavigationView {
-//            Form {
-//                Section(header: Text("買ったもの")) {
-//                    TextField("買ったものを入力してください", text: $shoppingMenu)
-//                }
-//                Section(header: Text("買った金額")) {
-//                    TextField("金額を入力しください", text: $shoppingMoney.IntToStrDef(shoppingMoney))
-//                }
-//            }
-//            .listStyle(GroupedListStyle())
-//            .navigationTitle("\(contentViewModel.name)")
-//            .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button(action: {
-//                        presentation.wrappedValue.dismiss()
-//                    }, label: {
-//                        Text("次へ")
-//                    })
-//                }
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button(action: {
-//                        presentation.wrappedValue.dismiss()
-//                        shoppingMenu = ""
-//                        shoppingMoney = 0
-//                    }, label: {
-//                        Text("キャンセル")
-//                    })
-//                }
-//            }
-//        }
-//    }
-//    
-//    
-//}
-//extension Binding where Value == Int {
-//    func IntToStrDef(_ def: Int) -> Binding<String> {
-//        return Binding<String>(get: {
-//            return String(self.wrappedValue)
-//        }) { value in
-//            self.wrappedValue = Int(value) ?? Int(def)
-//        }
-//    }
-//}
+struct ShoppingInputView: View {
+    var itemCellViewModel: ItemCellViewModel
+    @Binding var shoppingMenu: String
+    @Binding var shoppingMoney: Int
+    @Environment(\.presentationMode) var presentation
+    
+    var body: some View {
+        
+        NavigationView {
+            Form {
+                Section(header: Text("買ったもの")) {
+                    TextField("買ったものを入力してください", text: $shoppingMenu)
+                }
+                Section(header: Text("買った金額")) {
+                    TextField("金額を入力しください", text: $shoppingMoney.IntToStrDef(shoppingMoney))
+                }
+            }
+            .listStyle(GroupedListStyle())
+            .navigationTitle("\(itemCellViewModel.name)")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        presentation.wrappedValue.dismiss()
+                    }, label: {
+                        Text("次へ")
+                    })
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        presentation.wrappedValue.dismiss()
+                        shoppingMenu = ""
+                        shoppingMoney = 0
+                    }, label: {
+                        Text("キャンセル")
+                    })
+                }
+            }
+        }
+    }
+    
+    
+}
+extension Binding where Value == Int {
+    func IntToStrDef(_ def: Int) -> Binding<String> {
+        return Binding<String>(get: {
+            return String(self.wrappedValue)
+        }) { value in
+            self.wrappedValue = Int(value) ?? Int(def)
+        }
+    }
+}
