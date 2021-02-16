@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // アプリで使用するdefault.realmのパスを取得
         let config = Realm.Configuration(
             
-            schemaVersion: 1,
+            schemaVersion: 2,
             
             
             migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
+                if (oldSchemaVersion < 2) {
                     
                 }
             })
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaultRealmPath = Realm.Configuration.defaultConfiguration.fileURL!
         
         // 初期データが入ったRealmファイルのパスを取得
-        let bundleRealmPath = Bundle.main.url(forResource: "ItemList", withExtension: "realm")
+        let bundleRealmPath = Bundle.main.url(forResource: "default", withExtension: "realm")
         
         // アプリで使用するRealmファイルが存在しない（= 初回利用）場合は、シードファイルをコピーする
         if !FileManager.default.fileExists(atPath: defaultRealmPath.path) {

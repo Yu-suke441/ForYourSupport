@@ -12,7 +12,7 @@ struct ShoppingView: View {
     @State var isOnChartToggle = false
     @State var shoppingMenus = ""
     @State var shoppingMoneys: Int
-    var itemCellViewModel: ItemCellViewModel
+    let itemCellViewModel: ItemCellViewModel
    
     var body: some View {
         VStack(alignment: .leading) {
@@ -51,9 +51,9 @@ struct ShoppingView: View {
                         .frame(width:50, height: 50)
                 })
                 .padding()
-//                .sheet(isPresented: $isOnChartToggle) {
-//                    ShoppingInputView(contentViewModel: contentViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
-//                }
+                .sheet(isPresented: $isOnChartToggle) {
+                    ShoppingInputView(itemCellViewModel: itemCellViewModel, shoppingMenu: $shoppingMenus, shoppingMoney: $shoppingMoneys)
+                }
             }
             
         }

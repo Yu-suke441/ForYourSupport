@@ -28,4 +28,28 @@ class ItemListViewModel: ObservableObject {
 //    @Published var odr = 0
 }
 
+extension ItemListViewModel {
+    
+    func create(name: String, icon_file: String, record_type: String, odr: Int) {
+        
+        do {
+            let realm = try! Realm()
+            let itemModel = ItemModel()
+            itemModel.id = UUID().uuidString
+            itemModel.name = name
+            itemModel.icon_file = icon_file
+            itemModel.record_type = record_type
+            itemModel.odr = odr
+            try realm.write {
+                realm.add(itemModel)
+            }
+        }catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    
+}
+
 

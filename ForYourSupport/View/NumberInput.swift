@@ -11,7 +11,7 @@ import RealmSwift
 struct NumberInputView: View {
     @Binding var number: String
     @Environment(\.presentationMode) var presentation
-    var itemCellViewModel: ItemCellViewModel
+    let itemCellViewModel: ItemCellViewModel
     var body: some View {
         NavigationView {
             Form {
@@ -27,14 +27,16 @@ struct NumberInputView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        let myModel = NumberModel()
-                        myModel.recorded_at = Date()
-                        let realm = try? Realm()
-                        try? realm?.write {
-                            realm?.add(myModel)
-                            print(myModel)
-                        }
+//                        let myModel = NumberModel()
+//                        myModel.recorded_at = Date()
+//                        let realm = try? Realm()
+//                        try? realm?.write {
+//                            realm?.add(myModel)
+//                            print(myModel)
+//                        }
+                        update()
                         presentation.wrappedValue.dismiss()
+                        
                     }, label: {
                         Text("次へ")
                     })
@@ -53,7 +55,7 @@ struct NumberInputView: View {
     
     func update(){
         func newID(realm: Realm) -> Int {
-            if let number = realm.objects(NumberModel.self).sorted(byKeyPath: "id").last {
+            if let number = realm.objects(NumberModel.self).sorted(byKeyPath: "id", ascending: true).last {
                 return number.id + 1
             } else {
                     return 1
@@ -62,20 +64,20 @@ struct NumberInputView: View {
         
         
         let realm = try! Realm()
-        let itemModel = ItemModel()
         let num = NumberModel()
-        let itemDB = realm.object(ofType: ItemModel.self, forPrimaryKey: itemModel.id)
+        let itemModel = realm.object(ofType: ItemModel.self, forPrimaryKey: itemCellViewModel.id)
 
         num.id = newID(realm: realm)
         num.item_id = num.id
         
-        num.value = Int(number)!
+        num.value = Int(atof(number))
         num.recorded_at = Date()
         
                         
         try! realm.write{
-            itemDB?.numbers.append(num)
+            itemModel!.numbers.append(num)
             //realm.add(num, update: .modified)
+            print(num)
         }
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB1B247C25DB75F00047B1A2 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = CB127D8925DB3EE700CD5566 /* default.realm */; };
 		CB30F55525C155F700EC14F9 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F55425C155F700EC14F9 /* SettingView.swift */; };
 		CB31E0FE25D327B200A07A74 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0EF25D327B200A07A74 /* MemoViewModel.swift */; };
 		CB31E0FF25D327B200A07A74 /* ShoppingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31E0F025D327B200A07A74 /* ShoppingViewModel.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		C92C77B8FD3D2232A8EA509D /* Pods-ForYourSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.release.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.release.xcconfig"; sourceTree = "<group>"; };
+		CB127D8925DB3EE700CD5566 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = default.realm; path = Seed/default.realm; sourceTree = SOURCE_ROOT; };
 		CB30F55425C155F700EC14F9 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CB31E0EF25D327B200A07A74 /* MemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
 		CB31E0F025D327B200A07A74 /* ShoppingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingViewModel.swift; sourceTree = "<group>"; };
@@ -89,7 +91,6 @@
 		CBCA5309259DC41800B2E008 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CBCA530C259DC41800B2E008 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBCA530E259DC41800B2E008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBE8579C25D766DC0045AB8B /* ItemList.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = ItemList.realm; sourceTree = "<group>"; };
 		DCBC6677AD52658459033558 /* Pods_ForYourSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForYourSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB50873D281E6E085EF2DDA3 /* Pods-ForYourSupport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForYourSupport.debug.xcconfig"; path = "Target Support Files/Pods-ForYourSupport/Pods-ForYourSupport.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,7 +233,7 @@
 		CBEA43DD25ABE67800FC8AF5 /* Seed */ = {
 			isa = PBXGroup;
 			children = (
-				CBE8579C25D766DC0045AB8B /* ItemList.realm */,
+				CB127D8925DB3EE700CD5566 /* default.realm */,
 			);
 			path = Seed;
 			sourceTree = "<group>";
@@ -307,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBCA530D259DC41800B2E008 /* LaunchScreen.storyboard in Resources */,
+				CB1B247C25DB75F00047B1A2 /* default.realm in Resources */,
 				CBCA530A259DC41800B2E008 /* Preview Assets.xcassets in Resources */,
 				CBCA5307259DC41800B2E008 /* Assets.xcassets in Resources */,
 			);

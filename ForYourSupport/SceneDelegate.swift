@@ -21,11 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         do {
           
             let itemModel = ItemModel()
+            let itemListViewModel = ItemListViewModel()
+            let itemCellViewModel = ItemCellViewModel(itemModel: itemModel)
             let tableName = ""
+            let numberTypeListViewModel = NumberTypeListViewModel(item: itemCellViewModel)
             let window = UIWindow(windowScene: windowScene)
           // Realmを最初に読み込むところ
-            let contentView = ContentView(tableName: tableName)
-            .environmentObject(NumberViewModel())
+            let contentView = ContentView(tableName: tableName, numberTypeListViewModel: numberTypeListViewModel, itemListViewModel: itemListViewModel)
+            .environmentObject(ItemListViewModel())
+
           window.rootViewController = UIHostingController(rootView: contentView)
           self.window = window
           window.makeKeyAndVisible()

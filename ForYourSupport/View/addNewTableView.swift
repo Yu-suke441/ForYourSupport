@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct addNewTableView: View {
+    @ObservedObject var itemListViewModel: ItemListViewModel
     var selections = ["Number", "Memo"]
     @State private var selection = 0
     @State private var iconIndex = 0
     var icons = ["chart","graph","detail","check-mark","heart_rate","meal","memo","shopping","task","thermometer","through","time_of_sleep","weight-scale"]
     @Binding var tableName: String
     @Environment(\.presentationMode) var presentation
-    var itemCellViewModel : ItemCellViewModel
+    
     var body: some View {
         NavigationView {
             Form {
@@ -50,16 +51,15 @@ struct addNewTableView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                            presentation.wrappedValue.dismiss()
-
+                        presentation.wrappedValue.dismiss()
                     }, label: {
                         Text("キャンセル")
                     })
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                            presentation.wrappedValue.dismiss()
-
+                        presentation.wrappedValue.dismiss()
+                        itemListViewModel.create(name: tableName, icon_file: self.icons[iconIndex], record_type: selections[selection], odr: 5)
                     }, label: {
                         Text("テーブル追加")
                     })

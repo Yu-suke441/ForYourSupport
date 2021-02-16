@@ -15,7 +15,7 @@ struct NavigationBarView: View {
     @State var isOnToggle = false
     @State var showAddTablePicker = false
     @State var tableName: String
-    
+    var itemListViewModel: ItemListViewModel
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -46,9 +46,9 @@ struct NavigationBarView: View {
                 Text("追加")
                     .font(.headline)
                     .foregroundColor(.white)
-//                    .sheet(isPresented: $showAddTablePicker) {
-//                        addNewTableView(tableName: $tableName, Store: contentViewModel)
-//                    }
+                    .sheet(isPresented: $showAddTablePicker) {
+                        addNewTableView(itemListViewModel: itemListViewModel, tableName: $tableName)
+                    }
             })
             Button(action: {
                 self.isOnToggle.toggle()

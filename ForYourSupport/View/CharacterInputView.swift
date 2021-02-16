@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct CharacterInputView: View {
-    var itemCellViewModel: ItemCellViewModel
+    let itemCellViewModel: ItemCellViewModel
     @State var isOnToggle = false
     @Environment(\.presentationMode) var presentation
     @Binding var content: String

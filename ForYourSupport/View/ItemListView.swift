@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemListView: View {
     @ObservedObject var itemListViewModel = ItemListViewModel()
+    @ObservedObject var numberTypeListViewModel: NumberTypeListViewModel
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 1)
     var body: some View {
@@ -17,7 +18,7 @@ struct ItemListView: View {
              LazyVGrid(columns: columns) {
                 ForEach(itemListViewModel.itemCellViewModels, id: \.id) { itemCellViewModel in
                     
-                        ItemCellView(itemCellViewModel: itemCellViewModel)
+                    ItemCellView(itemCellViewModel: itemCellViewModel, numberTypeListViewModel: numberTypeListViewModel)
                             .contextMenu(ContextMenu(menuItems: {
                                 Button(action: {
                                 }, label: {

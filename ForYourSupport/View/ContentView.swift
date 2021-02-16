@@ -10,12 +10,14 @@ import RealmSwift
 
 struct ContentView: View {
     @State var tableName: String
+    @ObservedObject var numberTypeListViewModel: NumberTypeListViewModel
+    var itemListViewModel: ItemListViewModel
     var body: some View {
         VStack(spacing: 0) {
             Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)).edgesIgnoringSafeArea(.top).frame(height:0)
             
-            NavigationBarView(tableName: tableName)
-            ItemListView()
+            NavigationBarView(tableName: tableName, itemListViewModel: itemListViewModel)
+            ItemListView(numberTypeListViewModel: numberTypeListViewModel)
         }
         .background(Color(#colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)))
         .edgesIgnoringSafeArea(.bottom)

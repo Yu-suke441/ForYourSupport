@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShoppingInputView: View {
-    var itemCellViewModel: ItemCellViewModel
+    let itemCellViewModel: ItemCellViewModel
     @Binding var shoppingMenu: String
     @Binding var shoppingMoney: Int
     @Environment(\.presentationMode) var presentation

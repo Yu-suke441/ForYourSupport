@@ -13,7 +13,8 @@ struct NumberView: View {
     @State private var isOnGraphToggle = false
     @State private var isOnChartToggle = false
     @State var number = ""
-    var itemCellViewModel : ItemCellViewModel
+    let itemCellViewModel : ItemCellViewModel
+    @ObservedObject var numberTypeListViewModel: NumberTypeListViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -60,6 +61,7 @@ struct NumberView: View {
                             .frame(width:50, height: 50)
                     })
                     .sheet(isPresented: $isOnChartToggle) {
+                        NumberTypeListView(numberTypeListViewModel: numberTypeListViewModel, itemCellViewModel: itemCellViewModel)
                     }
                 }.padding()
             }
